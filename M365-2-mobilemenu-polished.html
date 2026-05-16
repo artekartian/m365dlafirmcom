@@ -1,0 +1,1176 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Microsoft 365 dla firm: nowoczesna współpraca, bezpieczeństwo i gotowość na AI. Wdrożenie i migracja dla małych i średnich firm w Polsce." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>microsoftdlafirm.com — Microsoft 365 gotowe na AI</title>
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg2:#071024;
+      --card: rgba(255,255,255,0.06);
+      --card2: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.12);
+      --stroke2: rgba(255,255,255,0.18);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --muted2: rgba(255,255,255,0.55);
+      --accent: #6ee7ff;
+      --accent2:#a78bfa;
+      --good:#34d399;
+      --warn:#fbbf24;
+      --bad:#fb7185;
+      --shadow: 0 14px 50px rgba(0,0,0,0.45);
+      --radius: 20px;
+      --radius2: 28px;
+      --max: 1120px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", "Liberation Sans", sans-serif;
+    }
+
+    /* Light mode (premium light AI) */
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f7f8fb;
+        --bg2:#ffffff;
+        --card: rgba(10,20,35,0.05);
+        --card2: rgba(10,20,35,0.07);
+        --stroke: rgba(10,20,35,0.12);
+        --stroke2: rgba(10,20,35,0.16);
+        --text: rgba(10,20,35,0.92);
+        --muted: rgba(10,20,35,0.68);
+        --muted2: rgba(10,20,35,0.55);
+        --shadow: 0 16px 60px rgba(10,20,35,0.12);
+      }
+    }
+
+    *{ box-sizing:border-box }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 600px at 18% 10%, rgba(110,231,255,0.18), transparent 55%),
+        radial-gradient(900px 520px at 78% 14%, rgba(167,139,250,0.16), transparent 55%),
+        radial-gradient(840px 520px at 50% 88%, rgba(110,231,255,0.12), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    /* Subtle premium noise */
+    body:before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      opacity:0.08;
+      mix-blend-mode: overlay;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size:240px 240px;
+    }
+
+    a{ color:inherit; text-decoration:none }
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.00));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    @media (prefers-color-scheme: light){
+      .nav{ background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.00));
+            border-bottom: 1px solid rgba(10,20,35,0.10);
+      }
+    }
+    .navin{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+      min-width: 0; 
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; white-space:nowrap;
+      font-weight:700; letter-spacing:-0.02em;
+      min-width: 0;  
+    }
+    .logo{
+      width:34px; height:34px; border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, rgba(110,231,255,0.95), rgba(167,139,250,0.85));
+      box-shadow: 0 10px 30px rgba(110,231,255,0.15);
+      position:relative;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:1px;
+      border-radius:11px;
+      border:1px solid rgba(255,255,255,0.18);
+    }
+    .menu{ display:flex; gap:18px; align-items:center; }
+    .menu a{
+      font-size:14px; color: var(--muted); padding:8px 10px; border-radius:12px;
+    }
+    .menu a:hover{ background: var(--card); color: var(--text); }
+    .navcta{ display:flex; gap:10px; align-items:center;flex: 0 0 auto; }
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
+      font-size:14px;
+      color: var(--text);
+      transition: transform .12s ease, background .12s ease, border .12s ease;
+      user-select:none;
+    }
+    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.08); border-color: var(--stroke2); }
+    .pill.primary{
+      border: 1px solid rgba(110,231,255,0.38);
+      background: linear-gradient(135deg, rgba(110,231,255,0.22), rgba(167,139,250,0.18));
+    }
+    .pill .ic{ width:16px; height:16px; opacity:.9 }
+
+    /* Hero */
+    header{ padding: 44px 0 18px; }
+    .hero{
+      display:grid; gap:18px;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items:stretch;
+    }
+    /* prawa karta w hero = druga .hcard (ta z kaflami) */
+    .hero > .hcard:nth-child(2){
+  display:flex;
+  align-items:center;   /* pionowo */
+    }
+
+.hero > .hcard:nth-child(2) .stack{
+  width:100%;
+}
+
+
+
+    @media (max-width: 940px){ .hero{ grid-template-columns:1fr; } }
+    .hcard{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hcard:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(500px 280px at 20% 20%, rgba(110,231,255,0.16), transparent 60%),
+        radial-gradient(520px 280px at 80% 30%, rgba(167,139,250,0.14), transparent 62%);
+      pointer-events:none;
+      filter:saturate(1.1);
+    }
+    .hcard > *{ position:relative; }
+
+    .kicker{
+      display:inline-flex; gap:10px; align-items:center;
+      font-family: var(--mono);
+      font-size:12px;
+      color: var(--muted);
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.05);
+      padding: 8px 12px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:99px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(110,231,255,0.10);
+    }
+    h1{
+      margin: 18px 0 16px;
+      font-weight: 780;
+      letter-spacing:-0.02em;
+      font-size: clamp(36px, 4.5vw, 54px);
+      line-height: 1.15;
+    }
+    .sub{
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 62ch;
+      margin: 0 0 16px;
+    }
+    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top: 18px; }
+    .mini{
+      color: var(--muted2); font-size: 13px; margin-top: 20px;
+    }
+
+    /* Right hero: premium highlights */
+    .stack{ display:grid; gap:12px; }
+    .tile{
+      padding: 16px 16px;
+      border-radius: 18px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,0.05);
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .tile b{ display:block; margin-bottom: 2px; }
+    .tile p{ margin:0; color:var(--muted); font-size: 14px; line-height:1.45 }
+    .tile .badge{
+      width:34px; height:34px; border-radius: 14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(110,231,255,0.20), rgba(167,139,250,0.16));
+      border:1px solid rgba(255,255,255,0.10);
+      flex:0 0 auto;
+    }
+    .tile svg{ width:18px; height:18px; opacity:.92 }
+
+    /* Section */
+    section{ padding: 64px 0; }
+    .secHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:18px; margin-bottom: 28px;
+    }
+    .secHead h2{
+      margin:0;
+      font-weight: 740;
+      letter-spacing:-0.02em;
+      font-size: 22px;
+    }
+    .secHead .hint{
+      color: var(--muted2);
+      font-size: 13px;
+      max-width: 52ch;
+      text-align:right;
+    }
+    @media (max-width: 720px){
+      .secHead{ flex-direction:column; align-items:flex-start; }
+      .secHead .hint{ text-align:left; }
+    }
+
+    .grid{
+      display:grid; gap:24px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+    .card{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,0.05);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.10);
+    }
+    .card h3{ margin:0 0 6px; font-size: 16px; letter-spacing:-0.01em; }
+    .card p{ margin:0; color: var(--muted); font-size: 14px; }
+    .card .top{
+      display:flex; align-items:center; gap:10px; margin-bottom: 10px;
+    }
+    .ico{
+      width:34px; height:34px; border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+    }
+    .ico svg{ width:18px; height:18px; opacity:.9 }
+
+    /* Columns */
+    .col-6{ grid-column: span 6; }
+    .col-4{ grid-column: span 4; }
+    .col-8{ grid-column: span 8; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 920px){
+      .col-6,.col-4,.col-8{ grid-column: span 12; }
+    }
+
+    /* Pricing */
+    .price{
+      position:relative;
+      overflow:hidden;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size: 12px; color: var(--muted);
+      border:1px solid var(--stroke);
+      padding: 6px 10px;
+      border-radius: 999px;
+      width: fit-content;
+      margin-bottom: 10px;
+      font-family: var(--mono);
+    }
+    .big{
+      font-size: 28px;
+      font-weight: 780;
+      letter-spacing:-0.03em;
+      margin: 8px 0 12px;
+    }
+    .per{ color: var(--muted2); font-size: 13px; margin-bottom: 40px;}
+    ul{ margin: 14px 0 0; padding: 0; list-style:none; display:grid; gap:10px; }
+    li{
+      display:flex; gap:10px; align-items:flex-start;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .chk{
+      width:18px; height:18px; border-radius: 6px;
+      background: rgba(52,211,153,0.16);
+      border:1px solid rgba(52,211,153,0.35);
+      display:grid; place-items:center;
+      flex:0 0 auto;
+      margin-top: 1px;
+    }
+    .chk svg{ width:12px; height:12px; color: var(--good); }
+
+    .price.featured{
+      border-color: rgba(110,231,255,0.34);
+      background: linear-gradient(180deg, rgba(110,231,255,0.10), rgba(167,139,250,0.07));
+    }
+    .price.featured:before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 260px at 20% 20%, rgba(110,231,255,0.18), transparent 60%),
+        radial-gradient(560px 260px at 80% 20%, rgba(167,139,250,0.16), transparent 60%);
+      pointer-events:none;
+    }
+    .price.featured > *{ position:relative; }
+
+    /* Process */
+    .step{
+      display:flex; gap:12px; align-items:flex-start;
+    }
+    .num{
+      width:34px; height:34px; border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+      border:1px solid var(--stroke);
+      display:grid; place-items:center;
+      font-family: var(--mono);
+      color: var(--text);
+      flex:0 0 auto;
+    }
+
+    /* FAQ */
+    details{
+      border:1px solid var(--stroke);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      padding: 14px 16px;
+    }
+    details summary{
+      cursor:pointer;
+      list-style:none;
+      display:flex; justify-content:space-between; gap:16px; align-items:center;
+      font-weight: 650;
+      letter-spacing:-0.01em;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
+
+    /* Footer contact */
+    .contact{
+      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+      justify-content:space-between;
+    }
+    .contactLeft{ max-width: 62ch; }
+    .kbd{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,0.05);
+      padding: 8px 10px;
+      border-radius: 12px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+    }
+    .toast{
+      position:fixed;
+      bottom: 16px; left:50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.72);
+      color: rgba(255,255,255,0.92);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 99;
+    }
+    @media (prefers-color-scheme: light){
+      .toast{ background: rgba(10,20,35,0.84); }
+    }
+    .toast.show{ opacity:1; transform: translateX(-50%) translateY(-4px); }
+
+    .fine{
+      color: var(--muted2);
+      font-size: 12px;
+      margin-top: 18px;
+      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+    }
+    @media (prefers-color-scheme: light){
+      .fine{ border-top: 1px solid rgba(10,20,35,0.10); }
+    }
+
+    /* Mobile menu */
+    .hamb{ display:none; }
+    @media (max-width: 860px){
+      .menu{ display:none; }
+      .hamb{ display:inline-flex; }
+    }
+
+
+.secHead .hint{
+  display:inline-flex;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--stroke);
+  background: rgba(255,255,255,0.05);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Krytyczne dla flex: pozwala elementom się kurczyć */
+.navin, .brand, .navcta { min-width: 0; }
+
+/* Brand nie może wypychać CTA i odwrotnie */
+.brand { flex: 1 1 auto; }
+.navcta { flex: 0 0 auto; }
+
+/* Bezpiecznie tnij długą nazwę domeny (gdy trzeba) */
+.brand > div { min-width: 0; }
+.brand > div > div:first-child{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Na wąskich ekranach chowamy tagline (2. linia) */
+@media (max-width: 680px){
+  .brand > div > div:nth-child(2){
+    display:none;
+  }
+}
+
+/* Na jeszcze węższych: CTA jako ikonki (tekst znika), hamburger zawsze widoczny */
+@media (max-width: 560px){
+  .navcta .pill{
+    padding: 10px 12px;   /* ciaśniej */
+  }
+
+  /* Zostawiamy ikonę, chowamy tekst w pillach CTA (nie w hamburgerze) */
+  .navcta .pill:not(.hamb){
+    font-size: 0;         /* ukrywa tekst */
+    gap: 0;
+  }
+
+  .navcta .pill:not(.hamb) .ic{
+    width: 18px;
+    height: 18px;
+  }
+}
+
+  
+
+    /* --- Mobile drawer menu (overlay + panel) --- */
+    .overlay{ display:none; position:fixed; inset:0; background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index:80; }
+
+    .drawer{ position:fixed; top:12px; right:12px; bottom:12px;
+      width:min(360px, calc(100vw - 24px));
+      border-radius:22px; border:1px solid rgba(255,255,255,0.14);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
+      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
+      outline: 1px solid rgba(110,231,255,0.10);
+      outline-offset: -10px;
+      z-index:90;
+      transform: translateX(110%);
+      transition: transform .22s ease, opacity .22s ease;
+      opacity: .98;
+      padding:14px;
+      padding-bottom: calc(14px + env(safe-area-inset-bottom));
+      display:grid; grid-template-rows:auto 1fr auto; gap:12px; }
+
+    .drawerTop{ display:flex; align-items:center; justify-content:space-between; gap:10px;
+      padding: 6px 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .drawerTitle{ font-weight:760; letter-spacing:-0.02em; font-size: 20px; }
+    .drawerSub{ margin-top:4px; font-size:12px; color: var(--muted2); }
+
+    .drawerClose{ width:44px; height:44px; border-radius:16px; border:1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.05); color: var(--text); cursor:pointer; display:grid; place-items:center; }
+    .drawerClose:hover{ background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.20); }
+    .drawerCloseIcon{ width:18px; height:18px; opacity:.9; }
+
+    .drawerLinks{ display:grid; gap:10px; padding: 14px 2px; overflow:auto; }
+
+    .drawerLink{ display:flex; align-items:center; gap:12px;
+      padding: 14px 14px; border-radius:18px;
+      border:1px solid rgba(255,255,255,0.06);
+      color: var(--text);
+      background: rgba(255,255,255,0.035);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+      transition: transform .12s ease, background .12s ease, border-color .12s ease; }
+    .drawerLink:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.10); }
+
+    .drawerLinkStrong{ border-color: rgba(110,231,255,0.26);
+      background: linear-gradient(135deg, rgba(110,231,255,0.12), rgba(167,139,250,0.10)); }
+
+    .dIc{ width:18px; height:18px; opacity:.92; flex:0 0 auto; }
+    .dLbl{ font-weight:640; letter-spacing:-0.01em; }
+    .dGo{ margin-left:auto; color: var(--muted2); font-family: var(--mono); font-size: 12px; }
+
+    .drawerFoot{ position: sticky; bottom: 0; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between;
+      padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);
+      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.14));
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+
+    body.menuOpen{ overflow:hidden; }
+    body.menuOpen .drawer{ transform: translateX(0); opacity: 1; }
+    body.menuOpen .overlay{ display:block; }
+
+    button.pill{ font-family: inherit; color: inherit; appearance:none; -webkit-appearance:none; }
+
+    @media (min-width: 861px){ .overlay, .drawer{ display:none !important; } }
+
+    @media (prefers-color-scheme: light){
+      .overlay{ background: rgba(10,20,35,0.35); }
+      .drawer{ box-shadow: 0 24px 70px rgba(10,20,35,0.18); }
+      .drawerFoot{ background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.65)); }
+    }
+
+  </style>
+
+  <!-- JSON-LD (basic SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ProfessionalService",
+    "name":"microsoftdlafirm.com",
+    "areaServed":"PL",
+    "description":"Wdrożenia Microsoft 365 dla małych i średnich firm: współpraca, bezpieczeństwo i gotowość na AI.",
+    "url":"https://microsoftdlafirm.com",
+    "serviceType":["Microsoft 365 wdrożenie","Migracja maili i danych","Bezpieczeństwo (tożsamość, dostęp, urządzenia)","Przygotowanie do AI / Copilot"],
+    "sameAs":[]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="wrap navin">
+      <div class="brand" aria-label="microsoftdlafirm.com">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <div style="font-size:14px; line-height:1.1;">microsoft<span style="opacity:.85">dlafirm</span>.com</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">Nowoczesne IT • Gotowe na AI</div>
+        </div>
+      </div>
+
+      <nav class="menu" aria-label="Nawigacja">
+        <a href="#dlaczego">Dlaczego teraz</a>
+        <a href="#filary">Co wdrażamy</a>
+        <a href="#pakiety">Pakiety</a>
+        <a href="#proces">Proces</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="navcta">
+        <a class="pill" href="#kontakt" title="Szybki kontakt">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6.5 12 12l8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Kontakt
+        </a>
+        <a class="pill primary" href="#konsultacja" title="Umów rozmowę">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M8 7h8M8 11h6M8 15h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M7 3h10a2 2 0 0 1 2 2v14l-4-3H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          </svg>
+          Konsultacja 15 min
+        </a>
+
+        <button class="pill hamb" id="hambBtn" type="button" aria-label="Otwórz menu" aria-expanded="false" aria-controls="drawer">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 7h14M5 12h14M5 17h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- Mobile Menu: overlay + drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menu mobilne">
+    <div class="drawerTop">
+      <div>
+        <div class="drawerTitle">Menu</div>
+        <div class="drawerSub">Szybki skrót do sekcji</div>
+      </div>
+      <button class="drawerClose" id="drawerClose" type="button" aria-label="Zamknij menu">
+        <svg class="drawerCloseIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 7l10 10M17 7 7 17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="drawerLinks" aria-label="Nawigacja mobilna">
+      <a class="drawerLink" href="#dlaczego">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="dLbl">Dlaczego teraz</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink" href="#filary">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dLbl">Co wdrażamy</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink" href="#scenariusze">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4h12v16H6V4Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dLbl">Scenariusze</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink" href="#pakiety">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.8"/><path d="M4 10V6a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 14v4a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dLbl">Pakiety</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink" href="#proces">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14l-4-3H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 7h8M8 11h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dLbl">Proces</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink" href="#faq">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22a10 10 0 1 0-10-10 10 10 0 0 0 10 10Z" stroke="currentColor" stroke-width="1.8"/><path d="M9.6 9.5a2.6 2.6 0 1 1 4.4 2c-.9.8-2 1.3-2 2.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 17.6h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+        <span class="dLbl">FAQ</span><span class="dGo">↵</span>
+      </a>
+      <a class="drawerLink drawerLinkStrong" href="#kontakt">
+        <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5 12 12l8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="dLbl">Kontakt</span><span class="dGo">↵</span>
+      </a>
+    </nav>
+
+    <div class="drawerFoot">
+      <a class="pill primary" href="#konsultacja">Konsultacja 15 min</a>
+      <button class="pill" type="button" id="drawerCopyEmail">Skopiuj e-mail</button>
+    </div>
+  </aside>
+
+  <main class="wrap">
+    <!-- HERO -->
+    <header>
+      <div class="hero">
+        <div class="hcard">
+          <div class="kicker"><span class="dot" aria-hidden="true"></span> Szybkie wdrożenia Microsoft 365 dla firm</div>
+          <h1>Uporządkuj firmową pocztę.<br>Przygotuj się na AI.</h1>
+          <p class="sub">
+            Nie chodzi tylko o e-mail. Wdrażamy <b>środowisko pracy Microsoft 365</b>:
+            komunikację (Teams), pliki (OneDrive/SharePoint), tożsamość i dostęp, bezpieczeństwo oraz standardy,
+            które otwierają drogę do automatyzacji i Microsoft 365 Copilot.
+          </p>
+
+          <div class="ctaRow" id="konsultacja">
+            <a class="pill primary" href="#kontakt">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+              Umów rozmowę / wycena
+            </a>
+
+            <button class="pill" id="copyEmailBtn" type="button" title="Skopiuj e-mail">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 9h10v10H9V9Z" stroke="currentColor" stroke-width="1.8" />
+                <path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Skopiuj: kontakt@microsoftdlafirm.com
+            </button>
+
+            <a class="pill" href="mailto:kontakt@microsoftdlafirm.com?subject=Microsoft%20365%20-%20konsultacja&body=Dzie%C5%84%20dobry%2C%0A%0AProsz%C4%99%20o%20kontakt%20w%20sprawie%20wdro%C5%BCenia%20Microsoft%20365.%0A%0AFirma%3A%20%0ALiczba%20pracownik%C3%B3w%3A%20%0AObecna%20poczta%2Fsystem%3A%20%0A%0ADzi%C4%99kuj%C4%99"
+               title="Wyślij e-mail">
+              <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M4 6.5 12 12l8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Napisz e-mail
+            </a>
+          </div>
+
+          <div class="mini">
+            Podejście „bez niespodzianek”: jasny plan, minimalny przestój, testy, dokumentacja i wsparcie po starcie.
+          </div>
+        </div>
+
+        <aside class="hcard" aria-label="Najważniejsze wyróżniki">
+          <div class="stack">
+            <div class="tile">
+              <div class="badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M9.4 12.4 11 14l3.6-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Bezpieczeństwo w standardzie</b>
+                <p>Tożsamość, MFA, zasady dostępu, uporządkowane role i podstawowe hardening — bez „dopłat za oczywistości”.</p>
+              </div>
+            </div>
+
+            <div class="tile">
+              <div class="badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-7Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M13 2v7h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M8 14h8M8 18h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Porządek w plikach i współpracy</b>
+                <p>OneDrive/SharePoint + Teams: jasne zasady, uprawnienia i struktura, żeby firma nie „tonęła w folderach”.</p>
+              </div>
+            </div>
+
+            <div class="tile">
+              <div class="badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12a8 8 0 1 0 16 0A8 8 0 0 0 4 12Z" stroke="currentColor" stroke-width="1.8"/>
+                  <path d="M12 7v6l4 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <b>Gotowość na automatyzację i AI</b>
+                <p>Standaryzacja i governance: to fundament, żeby Copilot/AI dawał wartość, a nie wprowadzał bałagan.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <!-- WHY NOW -->
+    <section id="dlaczego">
+      <div class="secHead">
+        <h2>Dlaczego warto zrobić to teraz</h2>
+        <!-- <div class="hint">SMB zwykle „urasta” do M365 przez problemy. Lepiej wdrożyć to kontrolowanie.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="card col-4">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 18h6l2 2 2-2h6V4H4v14Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M7 8h10M7 12h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Komunikacja i praca hybrydowa</h3>
+          </div>
+          <p>Teams + wspólne pliki i kalendarze redukują opóźnienia, „zguby” i chaos w ustaleniach.</p>
+        </div>
+
+        <div class="card col-4">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2l8 4v6c0 5-3.5 9.4-8 10-4.5-.6-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M12 11v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 8.2h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Bezpieczny dostęp</h3>
+          </div>
+          <p>MFA, kontrola urządzeń i zasady dostępu ograniczają ryzyko przejęcia kont i incydentów.</p>
+        </div>
+
+        <div class="card col-4">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M7 12a5 5 0 1 0 10 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M12 7v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>AI wymaga porządku</h3>
+          </div>
+          <p>Jeśli uprawnienia i dane są chaotyczne, AI tylko „nauczy się bałaganu”. Najpierw fundament.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section id="filary">
+      <div class="secHead">
+        <h2>Co wdrażamy (5 filarów Microsoft 365)</h2>
+        <!--<div class="hint">Dobieramy zakres do firmy — od „startu” po standardy bezpieczeństwa.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 6.5 12 12l8-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 7v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Poczta i kalendarze (Outlook / Exchange)</h3>
+          </div>
+          <p>Stabilna poczta, domena, aliasy, archiwum, podpisy automatyczne i najlepsze zabezpieczenia — wysoka wiarygodność la klientów.</p>
+        </div>
+
+        <div class="card col-6">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M7 7h10v10H7V7Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M4 10V6a2 2 0 0 1 2-2h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M20 14v4a2 2 0 0 1-2 2h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Teams: czat, spotkania, praca zespołowa</h3>
+          </div>
+          <p>Współpraca bez „wątków w e-mailu”, zasady zespołów, kanałów i spotkań: po ludzku i prosto.</p>
+        </div>
+
+        <div class="card col-6">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M4 8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8Z" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>SharePoint: wiedza, procedury, dokumenty</h3>
+          </div>
+          <p>Jedno miejsce na firmowe dokumenty i procesy — z uprawnieniami oraz wersjonowaniem.</p>
+        </div>
+
+        <div class="card col-6">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M8 6l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6 12v8a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-8" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>OneDrive: pliki użytkowników</h3>
+          </div>
+          <p>Bezpieczna synchronizacja, praca na laptopie i telefonie, kontrola udostępnień.</p>
+        </div>
+
+        <div class="card col-12">
+          <div class="top">
+            <div class="ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 12a5 5 0 1 0-5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M9 14h8a4 4 0 0 1 4 4v2H5v-2a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M17 6.5h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M19 4.5v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Tożsamość i bezpieczeństwo (Entra ID / zasady dostępu)</h3>
+          </div>
+          <p>
+            Projektujemy optymalny zestaw zasad, który robi realną różnicę: MFA, role administracyjne, polityki logowania,
+            podstawy ochrony przed przejęciem konta oraz standardy, które pozwalają bezpiecznie rosnąć (i wdrażać AI).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE CASES -->
+    <section id="scenariusze">
+      <div class="secHead">
+        <h2>Najczęstsze scenariusze w małych i średnich firmach</h2>
+        <!-- <div class="hint">To są cele biznesowe — narzędzia dobieramy pod firmę, nie odwrotnie.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="card col-4">
+          <h3>„Chcę, żeby każdy wiedział gdzie są pliki”</h3>
+          <p>Porządek w dokumentach + kontrola udostępnień. Koniec z „wyślij mi jeszcze raz”.</p>
+        </div>
+        <div class="card col-4">
+          <h3>„Współpraca i ustalenia muszą być szybsze”</h3>
+          <p>Teams + spójne kanały + standard spotkań. Mniej maili, mniej niejasności.</p>
+        </div>
+        <div class="card col-4">
+          <h3>„Potrzebuję bezpieczeństwa bez korporacyjnego ciężaru”</h3>
+          <p>MFA, zasady dostępu i standardy zabezpieczeń — wdrożone tak, by nie przeszkadzały w pracy.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pakiety">
+      <div class="secHead">
+        <h2>Pakiety wdrożenia (czytelnie i bez ukrytych haczyków)</h2>
+        <!-- <div class="hint">Dokładna wycena zależy od liczby kont, domen i źródła danych.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="card col-4 price">
+          <div class="tag">BASIC • szybki porządek</div>
+          <div class="big">Start</div>
+          <div class="per">dla firm, które chcą zacząć „dobrze”</div>
+          <ul>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Konfiguracja M365 + domena + konta</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Poczta i kalendarze (wdrożenie lub migracja)</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> MFA + podstawowe zasady bezpieczeństwa</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Instrukcja startowa dla użytkowników</li>
+          </ul>
+        </div>
+
+        <div class="card col-4 price featured">
+          <div class="tag">STANDARD • najczęstszy wybór</div>
+          <div class="big">Standard</div>
+          <div class="per">pełne środowisko współpracy</div>
+          <ul>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Wszystko ze Start</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Instalacja aplikacji</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> SharePoint: pliki ogólnofirmowe</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> „AI-ready” porządek uprawnień</li>
+          </ul>
+        </div>
+
+        <div class="card col-4 price">
+          <div class="tag">PREMIUM • podwyższony standard</div>
+          <div class="big">Premium</div>
+          <div class="per">dla firm, które chcą spać spokojnie</div>
+          <ul>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Wszystko ze Standard</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Zaawansowane zasady dostępu</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Bezpieczne załączniki</li>
+            <li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> XDR - ochrona przed ransomware</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="proces">
+      <div class="secHead">
+        <h2>Proces wdrożenia (prosto i przewidywalnie)</h2>
+        <!-- <div class="hint">Zawsze: plan → testy → wdrożenie → stabilizacja.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="card col-6">
+          <div class="step">
+            <div class="num">1</div>
+            <div>
+              <h3>Audyt startowy (rekonesans)</h3>
+              <p>Sprawdzamy źródła poczty/danych, domeny, użytkowników i kluczowe ryzyka. Ustalamy zakres.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="step">
+            <div class="num">2</div>
+            <div>
+              <h3>Projekt i przygotowanie</h3>
+              <p>Konfiguracja tenant, polityk, uprawnień, struktury Teams/plików — bez blokowania pracy.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="step">
+            <div class="num">3</div>
+            <div>
+              <h3>Migracja i uruchomienie</h3>
+              <p>Przenosimy pocztę w tle, przełączamy w kontrolowanym oknie czasowym. Zero przestojów.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card col-6">
+          <div class="step">
+            <div class="num">4</div>
+            <div>
+              <h3>Stabilizacja i wsparcie</h3>
+              <p>Wsparcie po starcie + poprawki. Dostajesz dokumentację i checklistę dalszego rozwoju.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="secHead">
+        <h2>FAQ</h2>
+       <!--  <div class="hint">Krótko — bez korpomowy.</div> -->
+      </div>
+
+      <div class="grid">
+        <div class="col-6">
+          <details>
+            <summary>Czy to jest tylko dla firm „od zera”?</summary>
+            <p>Nie. Najczęściej wdrażamy M365 w firmach, które już mają pocztę i pliki „gdzieś” — i chcą porządku oraz bezpieczeństwa.</p>
+          </details>
+        </div>
+        <div class="col-6">
+          <details>
+            <summary>Co z przestojem?</summary>
+            <p>Migrujemy pocztę i pliki w tle, bez przerywania pracy — przełączenie jest praktycznie niezauważalne dla użytkowników.”</p>
+          </details>
+        </div>
+        <div class="col-6">
+          <details>
+            <summary>Czy pomożecie w doborze licencji?</summary>
+            <p>Tak. Optymalizujemy licencje, ponieważ nie lubimy przepłacać. Wspieramy ponad 100 firm i 10 000 użytkowniów.</p>
+          </details>
+        </div>
+        <div class="col-6">
+          <details>
+            <summary>„Gotowość na AI” — co to znaczy w praktyce?</summary>
+            <p>Najpierw porządkujemy dostęp do danych i sposób pracy w firmie. Bez tego nawet najlepsze AI wprowadza więcej chaosu niż korzyści.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="kontakt">
+      <div class="secHead">
+        <h2>Kontakt</h2>
+        <!-- <div class="hint">Najpierw krótka rozmowa — potem konkretna propozycja.</div> -->
+      </div>
+
+      <div class="card col-12">
+        <div class="contact">
+          <div class="contactLeft">
+            <p style="margin:0; color:var(--muted);">
+              Napisz: <b>kontakt@microsoftdlafirm.com</b> — w temacie wpisz „Microsoft 365”, a w treści: branża, liczba użytkowników i co dziś działa (poczta/pliki/komunikacja).
+            </p>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+              <span class="kbd">Szybki start: domena • konta • bezpieczeństwo</span>
+              <span class="kbd">Współpraca: Teams • OneDrive • SharePoint</span>
+              <span class="kbd">Foundation: standardy pod automatyzację i AI</span>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="pill primary" href="mailto:kontakt@microsoftdlafirm.com?subject=Microsoft%20365%20-%20konsultacja&body=Dzie%C5%84%20dobry%2C%0A%0AFirma%3A%20%0ALiczba%20pracownik%C3%B3w%3A%20%0AObecny%20stan%20(poczta%2Fpliki%2Fkomunikacja)%3A%20%0ACel%20wdro%C5%BCenia%3A%20%0A%0AProsz%C4%99%20o%20kontakt.%0A">
+              Wyślij e-mail
+            </a>
+            <button class="pill" id="copy2Btn" type="button">Kopiuj adres</button>
+            <!-- Jeśli chcesz, podmień na swój link (np. Calendly) -->
+            <a class="pill" href="#konsultacja" title="Możesz podmienić na link do kalendarza">Konsultacja 15 min</a>
+          </div>
+        </div>
+
+        <div class="fine">
+          
+        <div>
+          © <span id="year"></span> microsoftdlafirm.com | marka 
+          <a href="https://valcreon.com" target="_blank" rel="noopener">Valcreon.com</a>
+        </div>
+
+          <div style="opacity:.9;">Microsoft 365 • Licencje • Wdrożenia • Gotowe na AI</div>
+        </div>
+      </div>
+    </section>
+
+    <div style="height:28px"></div>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Skopiowano</div>
+
+  <script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Copy email
+    const email = "kontakt@microsoftdlafirm.com";
+    const toast = document.getElementById("toast");
+    const showToast = (txt) => {
+      toast.textContent = txt || "Skopiowano";
+      toast.classList.add("show");
+      setTimeout(()=>toast.classList.remove("show"), 1200);
+    };
+    async function copyText(t){
+      try{
+        await navigator.clipboard.writeText(t);
+        showToast("Skopiowano: " + t);
+      }catch(e){
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = t; document.body.appendChild(ta);
+        ta.select(); document.execCommand("copy");
+        document.body.removeChild(ta);
+        showToast("Skopiowano: " + t);
+      }
+    }
+    document.getElementById("copyEmailBtn").addEventListener("click", ()=>copyText(email));
+    document.getElementById("copy2Btn").addEventListener("click", ()=>copyText(email));
+
+    // --- Mobile drawer menu ---
+    const overlay = document.getElementById("overlay");
+    const drawer = document.getElementById("drawer");
+    const hambBtn = document.getElementById("hambBtn");
+    const drawerClose = document.getElementById("drawerClose");
+    const drawerCopyEmail = document.getElementById("drawerCopyEmail");
+
+    // Focus management
+    let lastFocusEl = null;
+    function focusFirstDrawerLink(){
+      const first = drawer?.querySelector('a.drawerLink');
+      first?.focus();
+    }
+
+    function openMenu(){
+      lastFocusEl = document.activeElement;
+      document.body.classList.add("menuOpen");
+      overlay && (overlay.hidden = false);
+      drawer && drawer.setAttribute("aria-hidden", "false");
+      hambBtn && hambBtn.setAttribute("aria-expanded", "true");
+      setTimeout(focusFirstDrawerLink, 50);
+    }
+
+    function closeMenu(){
+      document.body.classList.remove("menuOpen");
+      overlay && (overlay.hidden = true);
+      drawer && drawer.setAttribute("aria-hidden", "true");
+      hambBtn && hambBtn.setAttribute("aria-expanded", "false");
+      setTimeout(() => { try{ lastFocusEl && lastFocusEl.focus(); }catch(e){} }, 20);
+    }
+
+    hambBtn && hambBtn.addEventListener("click", () => {
+      document.body.classList.contains("menuOpen") ? closeMenu() : openMenu();
+    });
+
+    overlay && overlay.addEventListener("click", closeMenu);
+    drawerClose && drawerClose.addEventListener("click", closeMenu);
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && document.body.classList.contains("menuOpen")) closeMenu();
+    });
+
+    drawer && drawer.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", () => setTimeout(closeMenu, 50));
+    });
+
+    drawerCopyEmail && drawerCopyEmail.addEventListener("click", () => {
+      copyText(email);
+      closeMenu();
+    });
+
+</script>
+</body>
+</html>
