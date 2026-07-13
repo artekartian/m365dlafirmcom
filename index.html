@@ -49,672 +49,540 @@ gtag('config','G-FTE45R7VLD',{'anonymize_ip':true});
 <meta name="twitter:image" content="https://microsoftdlafirm.com/og-cover.png">
 
   <style>
-    :root{
-      --bg: #0b1220;
-      --bg2:#071024;
-      --card: rgba(255,255,255,0.06);
-      --card2: rgba(255,255,255,0.08);
-      --stroke: rgba(255,255,255,0.12);
-      --stroke2: rgba(255,255,255,0.18);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --muted2: rgba(255,255,255,0.55);
-      --accent: #6ee7ff;
-      --accent2:#a78bfa;
-      --good:#34d399;
-      --warn:#fbbf24;
-      --bad:#fb7185;
-      --shadow: 0 14px 50px rgba(0,0,0,0.45);
-      --radius: 20px;
-      --radius2: 28px;
-      --max: 1120px;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-    }
-
-    /* Light mode (premium light AI) */
-    @media (prefers-color-scheme: light){
-      :root{
-        --bg: #f7f8fb;
-        --bg2:#ffffff;
-        --card: rgba(10,20,35,0.05);
-        --card2: rgba(10,20,35,0.07);
-        --stroke: rgba(10,20,35,0.12);
-        --stroke2: rgba(10,20,35,0.16);
-        --text: rgba(10,20,35,0.92);
-        --muted: rgba(10,20,35,0.68);
-        --muted2: rgba(10,20,35,0.55);
-        --shadow: 0 16px 60px rgba(10,20,35,0.12);
-      }
-    }
-    :root{--card-border:var(--stroke);--brand:var(--accent);--brand-light:var(--accent2);--brand-glow:rgba(110,231,255,0.35);--text-bright:var(--text);--text-dim:var(--muted);--bg3:rgba(255,255,255,0.08);}
-    @media (prefers-color-scheme:light){:root{--brand-glow:rgba(110,231,255,0.28);--bg3:rgba(10,20,35,0.06);}}
-
-
-    *{ box-sizing:border-box }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1200px 600px at 18% 10%, rgba(110,231,255,0.18), transparent 55%),
-        radial-gradient(900px 520px at 78% 14%, rgba(167,139,250,0.16), transparent 55%),
-        radial-gradient(840px 520px at 50% 88%, rgba(110,231,255,0.12), transparent 60%),
-        linear-gradient(180deg, var(--bg), var(--bg2));
-      min-height:100vh;
-      overflow-x:hidden;
-    }
-
-    /* Subtle premium noise */
-    body:before{
-      content:"";
-      position:fixed; inset:0;
-      pointer-events:none;
-      opacity:0.08;
-      mix-blend-mode: overlay;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      background-size:240px 240px;
-    }
-
-    a{ color:inherit; text-decoration:none }
-    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
-
-    /* Top nav */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      background: linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.00));
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    @media (prefers-color-scheme: light){
-      .nav{ background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.00));
-            border-bottom: 1px solid rgba(10,20,35,0.10);
-      }
-    }
-    .navin{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
-      gap:12px;
-      min-width: 0; 
-    }
- 
-
-    .menu{ display:flex; gap:18px; align-items:center; }
-    .menu a{
-      font-size:14px; color: var(--muted); padding:8px 10px; border-radius:12px;
-    }
-    .menu a:hover{ background: var(--card); color: var(--text); }
-    .navcta{ display:flex; gap:10px; align-items:center;flex: 0 0 auto; }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,0.06);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.10);
-      font-size:14px;
-      color: var(--text);
-      transition: transform .12s ease, background .12s ease, border .12s ease;
-      user-select:none;
-    }
-    .pill:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.08); border-color: var(--stroke2); }
-    .pill.primary{
-      border: 1px solid rgba(110,231,255,0.38);
-      background: linear-gradient(135deg, rgba(110,231,255,0.22), rgba(167,139,250,0.18));
-    }
-    .pill .ic{ width:16px; height:16px; opacity:.9 }
-
-    /* Hero */
-    header{ padding: 44px 0 18px; }
-    .hero{
-      display:grid; gap:18px;
-      grid-template-columns: 1.05fr 0.95fr;
-      align-items:stretch;
-    }
-    /* prawa karta w hero = druga .hcard (ta z kaflami) */
-    .hero > .hcard:nth-child(2){
-  display:flex;
-  align-items:center;   /* pionowo */
-    }
-
-.hero > .hcard:nth-child(2) .stack{
-  width:100%;
+:root{
+  --bg:#0b1220; --bg2:#071024;
+  --card:rgba(255,255,255,0.06); --card2:rgba(255,255,255,0.08);
+  --stroke:rgba(255,255,255,0.12); --stroke2:rgba(255,255,255,0.18);
+  --text:rgba(255,255,255,0.92); --muted:rgba(255,255,255,0.68); --muted2:rgba(255,255,255,0.55);
+  --accent:#6ee7ff; --accent2:#a78bfa;
+  --good:#34d399; --warn:#fbbf24; --bad:#fb7185;
+  --shadow:0 14px 50px rgba(0,0,0,0.45);
+  --radius:20px; --radius2:28px;
+  --max:1120px;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+  --sans:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,"Noto Sans","Liberation Sans",sans-serif;
+  --card-border:var(--stroke); --brand:var(--accent); --brand-light:var(--accent2);
+  --brand-glow:rgba(110,231,255,0.35); --text-bright:var(--text); --text-dim:var(--muted);
+  --bg3:rgba(255,255,255,0.08);
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#f7f8fb; --bg2:#ffffff;
+    --card:rgba(10,20,35,0.05); --card2:rgba(10,20,35,0.07);
+    --stroke:rgba(10,20,35,0.12); --stroke2:rgba(10,20,35,0.16);
+    --text:rgba(10,20,35,0.92); --muted:rgba(10,20,35,0.68); --muted2:rgba(10,20,35,0.55);
+    --shadow:0 16px 60px rgba(10,20,35,0.12);
+    --brand-glow:rgba(110,231,255,0.28); --bg3:rgba(10,20,35,0.06);
+  }
 }
 
+/* ===== RESET + BODY ===== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans); color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 18% 10%,rgba(110,231,255,0.18),transparent 55%),
+    radial-gradient(900px 520px at 78% 14%,rgba(167,139,250,0.16),transparent 55%),
+    radial-gradient(840px 520px at 50% 88%,rgba(110,231,255,0.12),transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  min-height:100vh; overflow-x:hidden;
+}
+body:before{
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:0.08; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-size:240px 240px;
+}
+a{color:inherit; text-decoration:none}
+.wrap{width:min(var(--max),calc(100% - 40px)); margin:0 auto}
 
+/* ===== TOP NAV ===== */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  background:linear-gradient(180deg,rgba(0,0,0,0.16),rgba(0,0,0,0.00));
+  border-bottom:1px solid rgba(255,255,255,0.06);
+  transition:transform .28s ease, backdrop-filter .2s ease; will-change:transform;
+}
+.nav.hide{transform:translateY(-100%)}
+.nav.scrolled{background:linear-gradient(180deg,rgba(0,0,0,0.32),rgba(0,0,0,0.14)); border-bottom-color:rgba(255,255,255,0.10)}
+@media (prefers-color-scheme:light){
+  .nav{background:linear-gradient(180deg,rgba(255,255,255,0.72),rgba(255,255,255,0.00)); border-bottom:1px solid rgba(10,20,35,0.10)}
+  .nav.scrolled{background:linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.75)); border-bottom-color:rgba(10,20,35,0.14)}
+}
+.navin{display:flex; align-items:center; justify-content:space-between; padding:14px 0; gap:12px; min-width:0}
+.navin,.brand,.navcta{min-width:0}
+.brand,.navcta{flex:0 0 auto}
+.brand{display:inline-flex; align-items:center; gap:10px; font-weight:700; letter-spacing:-0.02em; color:var(--text)}
+.brand > div{min-width:0}
+.brand > div > div:first-child{overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.brandLogo{width:32px; height:32px; border-radius:8px; display:block; flex:0 0 auto}
+.brandName{font-size:15px; letter-spacing:-0.01em; overflow:hidden; text-overflow:ellipsis}
+@media(max-width:480px){.brandName{font-size:13px} .brandLogo{width:28px; height:28px}}
+.menu{display:flex; gap:18px; align-items:center}
+.menu a{font-size:14px; color:var(--muted); padding:8px 10px; border-radius:12px}
+.menu a:hover{background:var(--card); color:var(--text)}
+.navcta{display:flex; gap:10px; align-items:center}
+.pill{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:10px 14px; border-radius:999px;
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.06);
+  box-shadow:0 10px 30px rgba(0,0,0,0.10);
+  font-size:14px; color:var(--text); user-select:none;
+  transition:transform .12s ease, background .12s ease, border .12s ease;
+}
+.pill:hover{transform:translateY(-1px); background:rgba(255,255,255,0.08); border-color:var(--stroke2)}
+.pill.primary{border:1px solid rgba(110,231,255,0.38); background:linear-gradient(135deg,rgba(110,231,255,0.22),rgba(167,139,250,0.18))}
+.pill .ic{width:16px; height:16px; opacity:.9}
+button.pill{font-family:inherit; color:inherit; appearance:none; -webkit-appearance:none}
+.hamb{display:none}
+@media(max-width:860px){.menu{display:none} .hamb{display:inline-flex}}
+@media(max-width:560px){
+  .navcta .pill{padding:10px 12px}
+  .navcta .pill:not(.hamb){font-size:0; gap:0}
+  .navcta .pill:not(.hamb) .ic{width:18px; height:18px}
+}
 
-    @media (max-width: 940px){ .hero{ grid-template-columns:1fr; } }
-    .hcard{
-      border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
-      border-radius: var(--radius2);
-      box-shadow: var(--shadow);
-      padding: 32px;
-      position:relative;
-      overflow:hidden;
-    }
-    .hcard:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(500px 280px at 20% 20%, rgba(110,231,255,0.16), transparent 60%),
-        radial-gradient(520px 280px at 80% 30%, rgba(167,139,250,0.14), transparent 62%);
-      pointer-events:none;
-      filter:saturate(1.1);
-    }
-    .hcard > *{ position:relative; }
-
-    .kicker{
-      display:inline-flex; gap:10px; align-items:center;
-      font-family: var(--mono);
-      font-size:12px;
-      color: var(--muted);
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,0.05);
-      padding: 8px 12px;
-      border-radius: 999px;
-      width: fit-content;
-    }
-    .dot{
-      width:8px; height:8px; border-radius:99px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(110,231,255,0.10);
-    }
-    h1{
-      margin: 18px 0 16px;
-      font-weight: 780;
-      letter-spacing:-0.02em;
-      font-size: clamp(36px, 4.5vw, 54px);
-      line-height: 1.15;
-    }
-    .sub{
-      font-size: 16px;
-      color: var(--muted);
-      max-width: 62ch;
-      margin: 0 0 16px;
-    }
-    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top: 18px; }
-    .mini{
-      color: var(--muted2); font-size: 13px; margin-top: 20px;
-    }
-
-    /* Right hero: premium highlights */
-    .stack{ display:grid; gap:12px; }
-    .tile{
-      padding: 16px 16px;
-      border-radius: 18px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,0.05);
-      display:flex; gap:12px; align-items:flex-start;
-    }
-    .tile b{ display:block; margin-bottom: 2px; }
-    .tile p{ margin:0; color:var(--muted); font-size: 14px; line-height:1.45 }
-    .tile .badge{
-      width:34px; height:34px; border-radius: 14px;
-      display:grid; place-items:center;
-      background: linear-gradient(135deg, rgba(110,231,255,0.20), rgba(167,139,250,0.16));
-      border:1px solid rgba(255,255,255,0.10);
-      flex:0 0 auto;
-    }
-    .tile svg{ width:18px; height:18px; opacity:.92 }
-
-    /* Section */
-    section{ padding: 64px 0; }
-    .secHead{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:18px; margin-bottom: 28px;
-    }
-    .secHead h2{
-      margin:0;
-      font-weight: 740;
-      letter-spacing:-0.02em;
-      font-size: 22px;
-    }
-    .secHead .hint{
-      color: var(--muted2);
-      font-size: 13px;
-      max-width: 52ch;
-      text-align:right;
-    }
-    @media (max-width: 720px){
-      .secHead{ flex-direction:column; align-items:flex-start; }
-      .secHead .hint{ text-align:left; }
-    }
-
-    .grid{
-      display:grid; gap:24px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .card{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,0.05);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 10px 34px rgba(0,0,0,0.10);
-    }
-    .card h3{ margin:0 0 6px; font-size: 16px; letter-spacing:-0.01em; }
-    .card p{ margin:0; color: var(--muted); font-size: 14px; }
-    .card .top{
-      display:flex; align-items:center; gap:10px; margin-bottom: 10px;
-    }
-    .ico{
-      width:34px; height:34px; border-radius: 14px;
-      background: rgba(255,255,255,0.06);
-      border:1px solid var(--stroke);
-      display:grid; place-items:center;
-    }
-    .ico svg{ width:18px; height:18px; opacity:.9 }
-
-    /* Columns */
-    .col-6{ grid-column: span 6; }
-    .col-4{ grid-column: span 4; }
-    .col-8{ grid-column: span 8; }
-    .col-12{ grid-column: span 12; }
-    @media (max-width: 920px){
-      .col-6,.col-4,.col-8{ grid-column: span 12; }
-    }
-
-    /* Pricing */
-    .price{
-      position:relative;
-      overflow:hidden;
-    }
-    .tag{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size: 12px; color: var(--muted);
-      border:1px solid var(--stroke);
-      padding: 6px 10px;
-      border-radius: 999px;
-      width: fit-content;
-      margin-bottom: 10px;
-      font-family: var(--mono);
-    }
-    .big{
-      font-size: 28px;
-      font-weight: 780;
-      letter-spacing:-0.03em;
-      margin: 8px 0 12px;
-    }
-    .per{ color: var(--muted2); font-size: 13px; margin-bottom: 40px;}
-    ul{ margin: 14px 0 0; padding: 0; list-style:none; display:grid; gap:10px; }
-    li{
-      display:flex; gap:10px; align-items:flex-start;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.4;
-    }
-    .chk{
-      width:18px; height:18px; border-radius: 6px;
-      background: rgba(52,211,153,0.16);
-      border:1px solid rgba(52,211,153,0.35);
-      display:grid; place-items:center;
-      flex:0 0 auto;
-      margin-top: 1px;
-    }
-    .chk svg{ width:12px; height:12px; color: var(--good); }
-
-    .price.featured{
-      border-color: rgba(110,231,255,0.34);
-      background: linear-gradient(180deg, rgba(110,231,255,0.10), rgba(167,139,250,0.07));
-    }
-    .price.featured:before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(520px 260px at 20% 20%, rgba(110,231,255,0.18), transparent 60%),
-        radial-gradient(560px 260px at 80% 20%, rgba(167,139,250,0.16), transparent 60%);
-      pointer-events:none;
-    }
-    .price.featured > *{ position:relative; }
-
-    /* Process */
-    .step{
-      display:flex; gap:12px; align-items:flex-start;
-    }
-    .num{
-      width:34px; height:34px; border-radius: 14px;
-      background: rgba(255,255,255,0.06);
-      border:1px solid var(--stroke);
-      display:grid; place-items:center;
-      font-family: var(--mono);
-      color: var(--text);
-      flex:0 0 auto;
-    }
-
-    /* FAQ */
-    details{
-      border:1px solid var(--stroke);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      padding: 14px 16px;
-    }
-    details summary{
-      cursor:pointer;
-      list-style:none;
-      display:flex; justify-content:space-between; gap:16px; align-items:center;
-      font-weight: 650;
-      letter-spacing:-0.01em;
-    }
-    details summary::-webkit-details-marker{ display:none; }
-    details p{ margin: 10px 0 0; color: var(--muted); font-size: 14px; }
-
-    /* Footer contact */
-    .contact{
-      display:flex; gap:14px; flex-wrap:wrap; align-items:center;
-      justify-content:space-between;
-    }
-    .contactLeft{ max-width: 62ch; }
-    .kbd{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: var(--muted);
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,0.05);
-      padding: 8px 10px;
-      border-radius: 12px;
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-    }
-    .toast{
-      position:fixed;
-      bottom: 16px; left:50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.72);
-      color: rgba(255,255,255,0.92);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .18s ease, transform .18s ease;
-      z-index: 99;
-    }
-    @media (prefers-color-scheme: light){
-      .toast{ background: rgba(10,20,35,0.84); }
-    }
-    .toast.show{ opacity:1; transform: translateX(-50%) translateY(-4px); }
-
-    .fine{
-      color: var(--muted2);
-      font-size: 12px;
-      margin-top: 18px;
-      display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 16px;
-    }
-    @media (prefers-color-scheme: light){
-      .fine{ border-top: 1px solid rgba(10,20,35,0.10); }
-    }
-
-    /* Mobile menu */
-    .hamb{ display:none; }
-    @media (max-width: 860px){
-      .menu{ display:none; }
-      .hamb{ display:inline-flex; }
-    }
-
-
-.secHead .hint{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 12px;
-  border-radius:999px;
+/* ===== HERO ===== */
+header{padding:44px 0 18px}
+.hero{display:grid; gap:18px; grid-template-columns:1.05fr 0.95fr; align-items:stretch}
+.hero > .hcard:nth-child(2){display:flex; align-items:center}
+.hero > .hcard:nth-child(2) .stack{width:100%}
+@media(max-width:940px){.hero{grid-template-columns:1fr}}
+.hcard{
   border:1px solid var(--stroke);
-  background: rgba(255,255,255,0.05);
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
+  background:linear-gradient(180deg,rgba(255,255,255,0.07),rgba(255,255,255,0.04));
+  border-radius:var(--radius2); box-shadow:var(--shadow);
+  padding:32px; position:relative; overflow:hidden;
+}
+.hcard:before{
+  content:""; position:absolute; inset:-2px;
+  background:
+    radial-gradient(500px 280px at 20% 20%,rgba(110,231,255,0.16),transparent 60%),
+    radial-gradient(520px 280px at 80% 30%,rgba(167,139,250,0.14),transparent 62%);
+  pointer-events:none; filter:saturate(1.1);
+}
+.hcard > *{position:relative}
+.kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  font-family:var(--mono); font-size:12px; color:var(--muted);
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  padding:8px 12px; border-radius:999px; width:fit-content;
+}
+.dot{width:8px; height:8px; border-radius:99px; background:linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 0 0 4px rgba(110,231,255,0.10)}
+h1{margin:18px 0 16px; font-weight:780; letter-spacing:-0.02em; font-size:clamp(36px,4.5vw,54px); line-height:1.15}
+.sub{font-size:16px; color:var(--muted); max-width:62ch; margin:0 0 16px}
+.ctaRow{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:18px}
+.mini{color:var(--muted2); font-size:13px; margin-top:20px}
+.stack{display:grid; gap:12px}
+.tile{
+  padding:16px; border-radius:18px;
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  display:flex; gap:12px; align-items:flex-start;
+}
+.tile b{display:block; margin-bottom:2px}
+.tile p{margin:0; color:var(--muted); font-size:14px; line-height:1.45}
+.tile .badge{
+  width:34px; height:34px; border-radius:14px;
+  display:grid; place-items:center;
+  background:linear-gradient(135deg,rgba(110,231,255,0.20),rgba(167,139,250,0.16));
+  border:1px solid rgba(255,255,255,0.10); flex:0 0 auto;
+}
+.tile svg{width:18px; height:18px; opacity:.92}
+
+/* ===== SECTION BASE ===== */
+section{padding:64px 0}
+.secHead{display:flex; align-items:flex-end; justify-content:space-between; gap:18px; margin-bottom:28px}
+.secHead h2{margin:0; font-weight:740; letter-spacing:-0.02em; font-size:22px}
+.secHead .hint{
+  display:inline-flex; align-items:center;
+  padding:8px 12px; border-radius:999px;
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  font-family:var(--mono); font-size:12px; color:var(--muted); max-width:52ch;
+}
+@media(max-width:720px){.secHead{flex-direction:column; align-items:flex-start} .secHead .hint{text-align:left}}
+.grid{display:grid; gap:24px; grid-template-columns:repeat(12,1fr)}
+.card{
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  border-radius:var(--radius); padding:18px;
+  box-shadow:0 10px 34px rgba(0,0,0,0.10);
+}
+.card h3{margin:0 0 6px; font-size:16px; letter-spacing:-0.01em}
+.card p{margin:0; color:var(--muted); font-size:14px}
+.card .top{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+.ico{width:34px; height:34px; border-radius:14px; background:rgba(255,255,255,0.06); border:1px solid var(--stroke); display:grid; place-items:center}
+.ico svg{width:18px; height:18px; opacity:.9}
+.col-6{grid-column:span 6}
+.col-4{grid-column:span 4}
+.col-8{grid-column:span 8}
+.col-12{grid-column:span 12}
+@media(max-width:920px){.col-6,.col-4,.col-8{grid-column:span 12}}
+
+/* ===== PRICING BASE (pakiety) ===== */
+.price{position:relative; overflow:hidden}
+.tag{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; color:var(--muted);
+  border:1px solid var(--stroke); padding:6px 10px;
+  border-radius:999px; width:fit-content; margin-bottom:10px; font-family:var(--mono);
+}
+.big{font-size:28px; font-weight:780; letter-spacing:-0.03em; margin:8px 0 12px}
+.per{color:var(--muted2); font-size:13px; margin-bottom:40px}
+ul{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+li{display:flex; gap:10px; align-items:flex-start; color:var(--muted); font-size:14px; line-height:1.4}
+.chk{
+  width:18px; height:18px; border-radius:6px;
+  background:rgba(52,211,153,0.16); border:1px solid rgba(52,211,153,0.35);
+  display:grid; place-items:center; flex:0 0 auto; margin-top:1px;
+}
+.chk svg{width:12px; height:12px; color:var(--good)}
+.price.featured{
+  border-color:rgba(110,231,255,0.34);
+  background:linear-gradient(180deg,rgba(110,231,255,0.10),rgba(167,139,250,0.07));
+}
+.price.featured:before{
+  content:""; position:absolute; inset:-2px; pointer-events:none;
+  background:
+    radial-gradient(520px 260px at 20% 20%,rgba(110,231,255,0.18),transparent 60%),
+    radial-gradient(560px 260px at 80% 20%,rgba(167,139,250,0.16),transparent 60%);
+}
+.price.featured > *{position:relative}
+.price.featured-purple{
+  border-color:rgba(167,139,250,0.38);
+  background:linear-gradient(180deg,rgba(167,139,250,0.12),rgba(110,231,255,0.06));
+  position:relative; overflow:hidden;
+}
+.price.featured-purple:before{
+  content:""; position:absolute; inset:-2px; pointer-events:none;
+  background:
+    radial-gradient(520px 260px at 20% 20%,rgba(167,139,250,0.18),transparent 60%),
+    radial-gradient(560px 260px at 80% 20%,rgba(110,231,255,0.14),transparent 60%);
+}
+.price.featured-purple > *{position:relative}
+.price.featured-purple .tag{border-color:rgba(167,139,250,0.35); background:linear-gradient(135deg,rgba(167,139,250,0.16),rgba(110,231,255,0.10)); color:var(--text)}
+
+/* ===== PROCESS ===== */
+.step{display:flex; gap:12px; align-items:flex-start}
+.num{
+  width:34px; height:34px; border-radius:14px;
+  background:rgba(255,255,255,0.06); border:1px solid var(--stroke);
+  display:grid; place-items:center;
+  font-family:var(--mono); color:var(--text); flex:0 0 auto;
 }
 
-/* Krytyczne dla flex: pozwala elementom się kurczyć */
-.navin, .brand, .navcta { min-width: 0; }
+/* ===== FAQ ===== */
+details{border:1px solid var(--stroke); border-radius:16px; background:rgba(255,255,255,0.05); padding:14px 16px}
+details summary{cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center; font-weight:650; letter-spacing:-0.01em}
+details summary::-webkit-details-marker{display:none}
+details p{margin:10px 0 0; color:var(--muted); font-size:14px}
 
-/* Brand nie może wypychać CTA i odwrotnie */
-.brand { flex: 0 0 auto; }
-.navcta { flex: 0 0 auto; }
+/* ===== MISC (contact/toast/fine/kbd) ===== */
+.contact{display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:space-between}
+.contactLeft{max-width:62ch}
+.kbd{
+  font-family:var(--mono); font-size:12px; color:var(--muted);
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  padding:8px 10px; border-radius:12px;
+  display:inline-flex; gap:10px; align-items:center;
+}
+.toast{
+  position:fixed; bottom:16px; left:50%; transform:translateX(-50%);
+  background:rgba(0,0,0,0.72); color:rgba(255,255,255,0.92);
+  padding:10px 14px; border-radius:999px; font-size:13px;
+  border:1px solid rgba(255,255,255,0.18); backdrop-filter:blur(10px);
+  opacity:0; pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease; z-index:99;
+}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(-4px)}
+@media (prefers-color-scheme:light){.toast{background:rgba(10,20,35,0.84)}}
+.fine{color:var(--muted2); font-size:12px}
+.small{font-size:12px}
+.muted{color:var(--muted)}
 
-/* Bezpiecznie tnij długą nazwę domeny (gdy trzeba) */
-.brand > div { min-width: 0; }
-.brand > div > div:first-child{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+/* ===== DRAWER (mobile) ===== */
+.overlay{
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.45);
+  backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:80;
+}
+.drawer{
+  position:fixed; top:12px; right:12px; bottom:12px;
+  width:min(360px,calc(100vw - 24px));
+  border-radius:22px; border:1px solid rgba(255,255,255,0.14);
+  background:linear-gradient(180deg,rgba(255,255,255,0.10),rgba(255,255,255,0.06));
+  box-shadow:0 24px 80px rgba(0,0,0,0.55);
+  outline:1px solid rgba(110,231,255,0.10); outline-offset:-10px;
+  z-index:90; transform:translateX(110%); opacity:.98;
+  transition:transform .22s ease, opacity .22s ease;
+  padding:14px; padding-bottom:calc(14px + env(safe-area-inset-bottom));
+  display:grid; grid-template-rows:auto 1fr auto; gap:12px;
+}
+.drawerTop{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 4px 10px; border-bottom:1px solid rgba(255,255,255,0.08)}
+.drawerTitle{font-weight:760; letter-spacing:-0.02em; font-size:20px}
+.drawerSub{margin-top:4px; font-size:12px; color:var(--muted2)}
+.drawerClose{width:44px; height:44px; border-radius:16px; border:1px solid rgba(255,255,255,0.14); background:rgba(255,255,255,0.05); color:var(--text); cursor:pointer; display:grid; place-items:center}
+.drawerClose:hover{background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.20)}
+.drawerCloseIcon{width:18px; height:18px; opacity:.9}
+.drawerLinks{display:grid; gap:10px; padding:14px 2px; overflow:auto}
+.drawerLink{
+  display:flex; align-items:center; gap:12px;
+  padding:14px; border-radius:18px;
+  border:1px solid rgba(255,255,255,0.06); color:var(--text);
+  background:rgba(255,255,255,0.035);
+  box-shadow:0 10px 28px rgba(0,0,0,0.18);
+  transition:transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.drawerLink:hover{transform:translateY(-1px); background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.10)}
+.drawerLinkStrong{border-color:rgba(110,231,255,0.26); background:linear-gradient(135deg,rgba(110,231,255,0.12),rgba(167,139,250,0.10))}
+.dIc{width:18px; height:18px; opacity:.92; flex:0 0 auto}
+.dLbl{font-weight:640; letter-spacing:-0.01em}
+.dGo{margin-left:auto; color:var(--muted2); font-family:var(--mono); font-size:12px}
+.drawerFoot{
+  position:sticky; bottom:0; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between;
+  padding-top:12px; border-top:1px solid rgba(255,255,255,0.08);
+  background:linear-gradient(180deg,rgba(0,0,0,0.00),rgba(0,0,0,0.14));
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
+body.menuOpen{overflow:hidden}
+body.menuOpen .drawer{transform:translateX(0); opacity:1}
+body.menuOpen .overlay{display:block}
+@media(min-width:861px){.overlay,.drawer{display:none !important}}
+@media (prefers-color-scheme:light){
+  .overlay{background:rgba(10,20,35,0.35)}
+  .drawer{box-shadow:0 24px 70px rgba(10,20,35,0.18)}
+  .drawerFoot{background:linear-gradient(180deg,rgba(255,255,255,0.00),rgba(255,255,255,0.65))}
 }
 
-/* Na jeszcze węższych: CTA jako ikonki (tekst znika), hamburger zawsze widoczny */
-@media (max-width: 560px){
-  .navcta .pill{
-    padding: 10px 12px;   /* ciaśniej */
-  }
+/* ===== TRUST LOGOS (legacy - używane tylko przez stary fallback) ===== */
+.trustLogos{display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:32px; padding:20px 0}
+.trustLogos img{max-height:36px; width:auto; opacity:.7; filter:grayscale(1); transition:opacity .2s, filter .2s}
+.trustLogos img:hover{opacity:1; filter:grayscale(0)}
+@media(max-width:480px){.trustLogos{gap:20px} .trustLogos img{max-height:28px}}
 
-  /* Zostawiamy ikonę, chowamy tekst w pillach CTA (nie w hamburgerze) */
-  .navcta .pill:not(.hamb){
-    font-size: 0;         /* ukrywa tekst */
-    gap: 0;
-  }
+/* ===== PROOF ITEMS (Partnerstwo) ===== */
+.proofItem{display:flex; gap:14px; align-items:flex-start}
+.proofLogo{width:56px; height:56px; object-fit:contain; flex:0 0 auto; border-radius:12px; background:rgba(255,255,255,0.06); padding:6px}
+.proofItem h3{margin:0 0 4px; font-size:15px}
+.proofItem p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
 
-  .navcta .pill:not(.hamb) .ic{
-    width: 18px;
-    height: 18px;
-  }
+/* ===== KONTAKT ===== */
+.kontaktGrid{display:grid; gap:20px; grid-template-columns:1fr 1fr; margin-top:20px}
+.kontaktLeft{display:flex; flex-direction:column; gap:20px}
+.ctaColumn{display:flex; flex-direction:column; gap:10px}
+.ctaColumn .pill{justify-content:flex-start; width:100%}
+.kontaktInfo{display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--muted); padding-top:12px; border-top:1px solid var(--stroke)}
+.kontaktFirma{padding-top:12px; border-top:1px solid var(--stroke); font-size:14px}
+.kontaktFirma .muted{color:var(--muted); font-size:13px}
+.kontaktFirma .small{font-size:12px; margin-top:4px}
+.kontaktMap{border-radius:20px; overflow:hidden; border:1px solid var(--stroke); min-height:360px; background:rgba(255,255,255,0.03)}
+.kontaktMap iframe{width:100%; height:100%; min-height:360px; border:0; display:block}
+@media(max-width:860px){.kontaktGrid{grid-template-columns:1fr}}
+
+/* ===== FORMULARZ ===== */
+.formularzGrid{display:grid; gap:24px; grid-template-columns:1fr 520px; align-items:start; margin-top:20px}
+#quickForm{display:grid; gap:10px}
+#quickForm input,#quickForm select{
+  padding:10px 14px; border-radius:14px;
+  border:1px solid var(--stroke); background:rgba(255,255,255,0.05);
+  color:var(--text); font-family:inherit; font-size:13px;
+}
+#quickForm input:focus,#quickForm select:focus{outline:none; border-color:var(--accent); background:rgba(255,255,255,0.08)}
+#quickForm .pill{justify-content:center; width:100%}
+#quickForm select option{background:#0b1220; color:var(--text); padding:10px}
+#quickForm select option:hover,#quickForm select option:focus,#quickForm select option:checked{background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff}
+@media(max-width:720px){.formularzGrid{grid-template-columns:1fr}}
+
+/* ===== FOOTER ===== */
+footer{padding:48px 0 32px; margin-top:40px; background:linear-gradient(180deg,transparent,rgba(0,0,0,0.08))}
+.footCta{margin-bottom:32px; text-align:center}
+.footCta h3{font-size:24px; letter-spacing:-0.02em; margin:12px 0 10px}
+.footCta .sub{margin:0 auto 18px; max-width:56ch}
+.footCta .pill{margin:0 auto}
+.footGrid{display:grid; gap:28px; grid-template-columns:1.4fr 1fr 1fr 1fr; padding:24px 0; border-top:1px solid var(--stroke); border-bottom:1px solid var(--stroke)}
+.footBrand{display:flex; align-items:center; gap:12px; margin-bottom:14px}
+.footBrand img{width:36px; height:36px; border-radius:10px}
+.footBrandName{font-weight:700; letter-spacing:-0.01em; font-size:15px}
+.footBrandTag{font-size:12px; margin-top:2px}
+.footTitle{margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:640}
+.footList{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+.footList a{color:var(--muted); font-size:14px; transition:color .15s}
+.footList a:hover{color:var(--text)}
+.footBottom{display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; padding-top:20px}
+.footBottom .fine{display:block; line-height:1.5}
+.footLinks{display:flex; gap:10px; align-items:center; flex-wrap:wrap; font-size:12px; color:var(--muted2)}
+.footLinks a{color:var(--muted)}
+.footLinks a:hover{color:var(--text)}
+.footLinks span{opacity:0.4}
+@media(max-width:860px){.footGrid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.footGrid{grid-template-columns:1fr; gap:20px}}
+
+/* ===== COOKIE BANNER + MODAL + REOPEN ===== */
+#cookieBanner{position:fixed;bottom:12px;left:12px;right:12px;max-width:520px;margin:0 auto;z-index:9999;padding:20px;border-radius:20px;background:rgba(22,27,34,.96);border:1px solid var(--card-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);color:var(--text);font-family:inherit;animation:cookieSlideUp .4s cubic-bezier(.16,1,.3,1);display:none}
+#cookieBanner.show{display:block}
+@keyframes cookieSlideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.cookieHead{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px;margin-bottom:14px}
+.cookieIco{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-light));display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 16px var(--brand-glow)}
+.cookieIco svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.cookieTitle{font-size:1.05rem;font-weight:800;letter-spacing:-.2px;margin:0 0 4px;color:var(--text-bright)}
+.cookieDesc{font-size:.85rem;line-height:1.55;color:var(--text-dim);margin:0}
+.cookieDesc a{color:var(--brand-light);text-decoration:underline;text-underline-offset:2px}
+.cookieActions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:16px}
+.cookieBtn{padding:11px 14px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:var(--text);font-weight:700;font-size:13px;font-family:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .1s}
+.cookieBtn:hover{border-color:var(--brand-light);background:var(--bg3)}
+.cookieBtn:active{transform:scale(.98)}
+.cookieBtn.primary{grid-column:1/-1;border-color:transparent;background:linear-gradient(135deg,var(--brand),var(--brand-light));color:#fff;box-shadow:0 4px 20px var(--brand-glow)}
+.cookieBtn.primary:hover{border-color:transparent;background:linear-gradient(135deg,var(--brand-light),var(--brand));color:#fff}
+.cookieBtn.settings{font-size:11.5px;letter-spacing:.3px;color:var(--text-dim);background:transparent}
+.cookieBtn.settings:hover{color:var(--text-bright);border-color:var(--brand-light)}
+@media(min-width:600px){#cookieBanner{left:20px;right:20px;bottom:20px;padding:24px}.cookieActions{grid-template-columns:1fr 1fr}}
+#cookieModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);z-index:10000;align-items:center;justify-content:center;padding:16px}
+#cookieModal.show{display:flex}
+.cookieModalBox{max-width:580px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;border-radius:20px;background:rgba(22,27,34,.98);border:1px solid var(--card-border);box-shadow:0 32px 80px rgba(0,0,0,.6);animation:cookieSlideUp .35s cubic-bezier(.16,1,.3,1)}
+.cookieModalBox h3{margin:0 0 8px;font-size:1.3rem;font-weight:800;letter-spacing:-.3px;color:var(--text-bright)}
+.cookieModalBox>p{margin:0 0 20px;color:var(--text-dim);font-size:.92rem;line-height:1.6}
+.cookieCategory{padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--card-border);margin-bottom:12px}
+.cookieCategoryHead{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px}
+.cookieCategoryHead strong{display:block;font-size:.98rem;margin-bottom:4px;color:var(--text-bright)}
+.cookieCategoryHead p{margin:0;font-size:.82rem;color:var(--text-dim);line-height:1.5}
+.cookieToggle{position:relative;flex-shrink:0;width:44px;height:24px;border-radius:99px;background:var(--bg3);border:1px solid var(--card-border);cursor:pointer;transition:background .2s;appearance:none;-webkit-appearance:none}
+.cookieToggle::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:99px;background:#fff;transition:transform .2s}
+.cookieToggle:checked{background:linear-gradient(135deg,var(--brand),var(--brand-light));border-color:transparent}
+.cookieToggle:checked::after{transform:translateX(20px)}
+.cookieToggle:disabled{opacity:.7;cursor:not-allowed}
+.cookieToggle:disabled::after{background:rgba(255,255,255,.7)}
+.cookieModalActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.cookieModalActions .cookieBtn{flex:1 1 100%}
+@media(min-width:600px){.cookieModalBox{padding:32px}.cookieModalActions .cookieBtn{flex:1}}
+#cookieReopen{display:none;position:fixed;bottom:20px;left:20px;width:44px;height:44px;border-radius:14px;background:rgba(22,27,34,.85);border:1px solid var(--card-border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:998;cursor:pointer;align-items:center;justify-content:center;color:var(--brand-light);box-shadow:0 8px 20px rgba(0,0,0,.3);transition:transform .15s,border-color .15s}
+#cookieReopen:hover{transform:scale(1.05);border-color:var(--brand-light)}
+#cookieReopen.show{display:flex}
+#cookieReopen svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media (prefers-color-scheme:light){
+  #cookieBanner{background:rgba(255,255,255,0.96);color:var(--text)}
+  .cookieModalBox{background:rgba(255,255,255,0.98);color:var(--text)}
+  #cookieReopen{background:rgba(255,255,255,0.9)}
+  .cookieBtn{color:var(--text)}
+  .cookieBtn.settings{color:var(--muted)}
 }
 
-  
+/* ================= SEKCJE SCOPED (one-line = one rule) ================= */
 
-    /* --- Mobile drawer menu (overlay + panel) --- */
-    .overlay{ display:none; position:fixed; inset:0; background: rgba(0,0,0,0.45);
-      backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); z-index:80; }
+/* ===== SEKCJA #zaufali - klienci ===== */
+#zaufali{padding:56px 0;position:relative}
+#zaufali .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+#zaufali .sectionTitle{margin-bottom:20px}
+#zaufali .sectionTitle h2{margin:8px 0 10px;font-weight:740;letter-spacing:-0.02em;font-size:clamp(22px,3vw,28px)}
+#zaufali .lead{margin:0;color:var(--muted);font-size:14px;max-width:62ch;line-height:1.5}
+#zaufali .trustGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px}
+#zaufali .trustTile{display:flex;align-items:center;justify-content:center;background:#fff;border-radius:16px;border:1px solid rgba(232,238,252,.08);box-shadow:0 6px 20px rgba(0,0,0,.20);padding:18px 20px;min-height:88px;min-width:0;overflow:hidden;cursor:default;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease}
+#zaufali .trustTile:hover{transform:translateY(-3px);background:#fafbff;box-shadow:0 14px 36px rgba(124,92,255,.20);border-color:rgba(124,92,255,.35)}
+#zaufali .trustTile img{max-width:100%;max-height:52px;width:auto;height:auto;object-fit:contain;display:block;filter:none;transition:transform .2s ease}
+#zaufali .trustTile:hover img{transform:scale(1.04)}
+@media(min-width:600px){#zaufali .trustGrid{grid-template-columns:repeat(3,1fr);gap:16px}#zaufali .trustTile{min-height:96px;padding:20px 22px}#zaufali .trustTile img{max-height:56px}}
+@media(min-width:980px){#zaufali .trustGrid{grid-template-columns:repeat(5,1fr);gap:18px}#zaufali .trustTile{min-height:104px;padding:22px 24px}#zaufali .trustTile img{max-height:60px}}
+@media(min-width:1180px){#zaufali{padding:80px 0}}
+@media(max-width:480px){#zaufali{padding:44px 0}#zaufali .trustGrid{gap:12px}#zaufali .trustTile{min-height:76px;padding:14px 16px;border-radius:14px}#zaufali .trustTile img{max-height:44px}}
 
-    .drawer{ position:fixed; top:12px; right:12px; bottom:12px;
-      width:min(360px, calc(100vw - 24px));
-      border-radius:22px; border:1px solid rgba(255,255,255,0.14);
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.06));
-      box-shadow: 0 24px 80px rgba(0,0,0,0.55);
-      outline: 1px solid rgba(110,231,255,0.10);
-      outline-offset: -10px;
-      z-index:90;
-      transform: translateX(110%);
-      transition: transform .22s ease, opacity .22s ease;
-      opacity: .98;
-      padding:14px;
-      padding-bottom: calc(14px + env(safe-area-inset-bottom));
-      display:grid; grid-template-rows:auto 1fr auto; gap:12px; }
+/* ===== SEKCJE #copilot i #m365 (pricing cards) ===== */
+#copilot,#m365{padding:56px 0;position:relative}
+#copilot .container,#m365 .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+#copilot .sectionTitle,#m365 .sectionTitle{margin-bottom:20px}
+#copilot .sectionTitle h2,#m365 .sectionTitle h2{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 10px;font-weight:740;letter-spacing:-0.02em;font-size:clamp(22px,3vw,28px)}
+#copilot .lead,#m365 .lead{margin:0;color:var(--muted);font-size:14px;max-width:62ch;line-height:1.5}
+#copilot .ico.ico-lg,#m365 .ico.ico-lg{width:32px;height:32px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid var(--stroke);display:inline-grid;place-items:center;padding:0}
+#copilot .ico.ico-lg svg,#m365 .ico.ico-lg svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#copilot .ico.ico-sm,#m365 .ico.ico-sm{width:14px;height:14px;display:inline-grid;place-items:center;vertical-align:middle}
+#copilot .ico.ico-sm svg,#m365 .ico.ico-sm svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#copilot .pricing,#m365 .pricing{display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:24px;align-items:stretch}
+#copilot .priceCard,#m365 .priceCard{display:flex;flex-direction:column;min-width:0;padding:1.4rem;padding-bottom:1.4rem;border:1px solid var(--stroke);border-radius:var(--radius);background:rgba(255,255,255,0.05);box-shadow:0 10px 34px rgba(0,0,0,0.10);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease}
+#copilot .priceCard:hover,#m365 .priceCard:hover{transform:translateY(-3px);border-color:var(--stroke2);background:rgba(255,255,255,0.07)}
+#copilot .priceCard.featured,#m365 .priceCard.featured{border-color:rgba(110,231,255,0.34);background:linear-gradient(180deg,rgba(110,231,255,0.10),rgba(167,139,250,0.07))}
+#copilot .priceCard.featured-purple,#m365 .priceCard.featured-purple{border-color:rgba(167,139,250,0.38);background:linear-gradient(180deg,rgba(167,139,250,0.12),rgba(110,231,255,0.06))}
+#copilot .priceCard>div[style*="margin-top:auto"],#m365 .priceCard>div[style*="margin-top:auto"]{display:flex;flex-direction:column;flex:1 1 auto}
+#copilot .priceCard .bullets,#m365 .priceCard .bullets{flex:1 1 auto;list-style:none;padding:0;margin:14px 0 18px;display:grid;gap:8px}
+#copilot .priceCard .bullets li,#m365 .priceCard .bullets li{position:relative;padding-left:20px;color:var(--muted);font-size:13.5px;line-height:1.45}
+#copilot .priceCard .bullets li:before,#m365 .priceCard .bullets li:before{content:"";position:absolute;left:4px;top:8px;width:8px;height:8px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 0 3px rgba(110,231,255,0.14)}
+#copilot .badge,#m365 .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,0.05);font-family:var(--mono);font-size:12px;color:var(--muted);width:fit-content;margin-bottom:10px}
+#copilot .badge.purple,#m365 .badge.purple{border-color:rgba(167,139,250,0.35);background:linear-gradient(135deg,rgba(167,139,250,0.14),rgba(110,231,255,0.10))}
+#copilot .badge.neutral,#m365 .badge.neutral{border-color:var(--stroke);background:rgba(255,255,255,0.04);color:var(--muted2)}
+#copilot .priceName,#m365 .priceName{font-size:16px;font-weight:700;letter-spacing:-0.01em;margin:0 0 6px;color:var(--text)}
+#copilot .priceDesc,#m365 .priceDesc{margin:0 0 14px;color:var(--muted);font-size:13px;line-height:1.5}
+#copilot .price,#m365 .price{display:block;margin:8px 0 4px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;font-size:26px;font-weight:780;letter-spacing:-0.03em;line-height:1.15;color:var(--text)}
+#copilot .btn,#m365 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 16px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,0.06);color:var(--text);font-size:14px;font-weight:640;text-align:center;cursor:pointer;width:auto;transition:transform .12s ease,background .12s ease,border-color .12s ease}
+#copilot .btn:hover,#m365 .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,0.09);border-color:var(--stroke2)}
+#copilot .priceCard .btn,#m365 .priceCard .btn{width:100%;margin-top:auto}
+#copilot .btn.primary,#m365 .btn.primary{border-color:rgba(110,231,255,0.38);background:linear-gradient(135deg,rgba(110,231,255,0.22),rgba(167,139,250,0.18))}
+#copilot .btn.accent2,#m365 .btn.accent2{border-color:rgba(167,139,250,0.42);background:linear-gradient(135deg,rgba(167,139,250,0.24),rgba(110,231,255,0.14))}
+@media(min-width:720px){#copilot .pricing,#m365 .pricing{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1180px){#copilot,#m365{padding:80px 0}}
+@media(max-width:480px){#copilot,#m365{padding:44px 0}#copilot .priceCard,#m365 .priceCard{padding:1.1rem!important;opacity:1!important}#copilot .priceCard.featured,#m365 .priceCard.featured,#copilot .priceCard.featured-purple,#m365 .priceCard.featured-purple{padding:1.4rem!important}#copilot .price,#m365 .price{font-size:22px}#copilot .btn,#m365 .btn{width:100%}}
 
-    .drawerTop{ display:flex; align-items:center; justify-content:space-between; gap:10px;
-      padding: 6px 4px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); }
-    .drawerTitle{ font-weight:760; letter-spacing:-0.02em; font-size: 20px; }
-    .drawerSub{ margin-top:4px; font-size:12px; color: var(--muted2); }
+/* ===== SEKCJA #pakiety (rozbudowane karty produktowe) ===== */
+#pakiety{padding:56px 0;position:relative}
+#pakiety .container{width:min(var(--max),calc(100% - 40px));margin:0 auto}
+#pakiety .sectionTitle{margin-bottom:20px}
+#pakiety .sectionTitle h2{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:8px 0 10px;font-weight:740;letter-spacing:-0.02em;font-size:clamp(22px,3vw,28px)}
+#pakiety .lead{margin:0;color:var(--muted);font-size:14px;max-width:75ch;line-height:1.6}
+#pakiety .ico.ico-lg{width:32px;height:32px;border-radius:12px;background:rgba(255,255,255,0.06);border:1px solid var(--stroke);display:inline-grid;place-items:center;padding:0}
+#pakiety .ico.ico-lg svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#pakiety .ico.ico-sm{width:16px;height:16px;display:inline-grid;place-items:center;vertical-align:middle}
+#pakiety .ico.ico-sm svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#pakiety .productGrid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:24px}
+#pakiety .productCard{position:relative;display:flex;flex-direction:column;gap:14px;padding:24px 22px;border-radius:var(--radius);border:1px solid var(--stroke);background:rgba(255,255,255,0.05);box-shadow:0 10px 34px rgba(0,0,0,0.10);min-width:0;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+#pakiety .productCard:hover{transform:translateY(-2px);border-color:var(--stroke2);box-shadow:0 18px 52px rgba(0,0,0,0.20)}
+#pakiety .productCard.p1{border-color:rgba(110,231,255,0.18);background:linear-gradient(160deg,rgba(110,231,255,0.05),rgba(255,255,255,0.04))}
+#pakiety .productCard.p1:hover{border-color:rgba(110,231,255,0.34)}
+#pakiety .productCard.p2{border-color:rgba(110,231,255,0.34);background:linear-gradient(160deg,rgba(110,231,255,0.10),rgba(255,255,255,0.04))}
+#pakiety .productCard.p2:hover{border-color:rgba(110,231,255,0.50)}
+#pakiety .productCard.p3{border-color:rgba(167,139,250,0.38);background:linear-gradient(160deg,rgba(167,139,250,0.12),rgba(255,255,255,0.04))}
+#pakiety .productCard.p3:hover{border-color:rgba(167,139,250,0.55)}
+#pakiety .productBadge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:5px 12px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,0.04);font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.4px;text-transform:uppercase;color:var(--muted)}
+#pakiety .productCard.p1 .productBadge{border-color:rgba(232,238,252,0.20);background:rgba(232,238,252,0.04);color:var(--muted2)}
+#pakiety .productCard.p2 .productBadge{border-color:rgba(110,231,255,0.34);background:rgba(110,231,255,0.10);color:#c8ecff}
+#pakiety .productCard.p3 .productBadge{border-color:rgba(167,139,250,0.35);background:rgba(167,139,250,0.10);color:#dcc9ff}
+#pakiety .productCard h3{margin:0;font-size:22px;font-weight:800;letter-spacing:-0.4px;color:var(--text)}
+#pakiety .productDesc{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+#pakiety .productTarget{padding:12px 14px;border-radius:14px;background:rgba(255,255,255,0.04);border:1px solid var(--stroke);font-size:13px;color:var(--muted);line-height:1.5}
+#pakiety .productTarget strong{display:block;margin-bottom:4px;font-size:11px;text-transform:uppercase;letter-spacing:0.6px;font-weight:700;color:var(--muted2)}
+#pakiety .productScope{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13.5px;color:var(--muted);line-height:1.5}
+#pakiety .productScope li{display:flex;align-items:flex-start;gap:8px}
+#pakiety .productScope .ico-check{flex-shrink:0;margin-top:2px;color:var(--good)}
+#pakiety .productScope .ico-check svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+#pakiety .productCard .btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px 16px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,0.06);color:var(--text);font-size:14px;font-weight:640;text-align:center;cursor:pointer;transition:transform .12s ease,background .12s ease,border-color .12s ease}
+#pakiety .productCard .btn:hover{transform:translateY(-1px);background:rgba(255,255,255,0.09);border-color:var(--stroke2)}
+#pakiety .productCard.p2 .btn{border-color:rgba(110,231,255,0.38);background:linear-gradient(135deg,rgba(110,231,255,0.22),rgba(167,139,250,0.18))}
+#pakiety .productCard.p3 .btn{border-color:rgba(167,139,250,0.42);background:linear-gradient(135deg,rgba(167,139,250,0.24),rgba(110,231,255,0.14))}
+#pakiety .productFine{margin-top:18px;text-align:center;color:var(--muted2);font-size:12px}
+@media(min-width:720px){#pakiety .productGrid{grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}}
+@media(min-width:1180px){#pakiety{padding:80px 0}}
+@media(max-width:480px){#pakiety{padding:44px 0}#pakiety .productCard{padding:20px 18px}#pakiety .productCard h3{font-size:20px}}
 
-    .drawerClose{ width:44px; height:44px; border-radius:16px; border:1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05); color: var(--text); cursor:pointer; display:grid; place-items:center; }
-    .drawerClose:hover{ background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.20); }
-    .drawerCloseIcon{ width:18px; height:18px; opacity:.9; }
+/* ===== SEKCJA #dlaczego (hook challenge) ===== */
+#dlaczego .card p .challenge{position:relative;display:block;margin:0 0 8px;padding:0 0 8px;font-size:15px;font-weight:700;line-height:1.35;letter-spacing:-0.01em;color:var(--text);border-bottom:1px solid var(--stroke)}
+#dlaczego .card p .challenge:before{content:"";position:absolute;left:0;bottom:-1px;width:32px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+@media(max-width:480px){#dlaczego .card p .challenge{font-size:14.5px;margin-bottom:7px;padding-bottom:7px}}
 
-    .drawerLinks{ display:grid; gap:10px; padding: 14px 2px; overflow:auto; }
-
-    .drawerLink{ display:flex; align-items:center; gap:12px;
-      padding: 14px 14px; border-radius:18px;
-      border:1px solid rgba(255,255,255,0.06);
-      color: var(--text);
-      background: rgba(255,255,255,0.035);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
-      transition: transform .12s ease, background .12s ease, border-color .12s ease; }
-    .drawerLink:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.10); }
-
-    .drawerLinkStrong{ border-color: rgba(110,231,255,0.26);
-      background: linear-gradient(135deg, rgba(110,231,255,0.12), rgba(167,139,250,0.10)); }
-
-    .dIc{ width:18px; height:18px; opacity:.92; flex:0 0 auto; }
-    .dLbl{ font-weight:640; letter-spacing:-0.01em; }
-    .dGo{ margin-left:auto; color: var(--muted2); font-family: var(--mono); font-size: 12px; }
-
-    .drawerFoot{ position: sticky; bottom: 0; display:flex; gap:10px; flex-wrap:wrap; justify-content:space-between;
-      padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.14));
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
-
-    body.menuOpen{ overflow:hidden; }
-    body.menuOpen .drawer{ transform: translateX(0); opacity: 1; }
-    body.menuOpen .overlay{ display:block; }
-
-    button.pill{ font-family: inherit; color: inherit; appearance:none; -webkit-appearance:none; }
-
-    @media (min-width: 861px){ .overlay, .drawer{ display:none !important; } }
-
-    @media (prefers-color-scheme: light){
-      .overlay{ background: rgba(10,20,35,0.35); }
-      .drawer{ box-shadow: 0 24px 70px rgba(10,20,35,0.18); }
-      .drawerFoot{ background: linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.65)); }
-    }
-
-    .brand{display:inline-flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.02em;color:var(--text);min-width:0;flex:0 0 auto;}2.brandLogo{width:32px;height:32px;border-radius:8px;display:block;flex:0 0 auto;}3.brandName{font-size:15px;letter-spacing:-0.01em;overflow:hidden;text-overflow:ellipsis;}4@media (max-width:480px){.brandName{font-size:13px;}.brandLogo{width:28px;height:28px;}}
-    
-    .trustLogos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px;padding:20px 0;}
-.trustLogos img{max-height:36px;width:auto;opacity:0.65;filter:grayscale(1);transition:opacity .2s,filter .2s;}
-.trustLogos img:hover{opacity:1;filter:grayscale(0);}
-@media (max-width:480px){.trustLogos{gap:20px;}.trustLogos img{max-height:28px;}}
-.proofItem{display:flex;gap:14px;align-items:flex-start;}
-.proofLogo{width:56px;height:56px;object-fit:contain;flex:0 0 auto;border-radius:12px;background:rgba(255,255,255,0.06);padding:6px;}
-.proofItem h3{margin:0 0 4px;font-size:15px;}
-.proofItem p{margin:0;color:var(--muted);font-size:13px;line-height:1.45;}
-.kontaktGrid{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-top:20px;}
-@media (max-width:860px){.kontaktGrid{grid-template-columns:1fr;}}
-.kontaktLeft{display:flex;flex-direction:column;gap:20px;}
-.ctaColumn{display:flex;flex-direction:column;gap:10px;}
-.ctaColumn .pill{justify-content:flex-start;width:100%;}
-.kontaktInfo{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted);padding-top:12px;border-top:1px solid var(--stroke);}
-.kontaktFirma{padding-top:12px;border-top:1px solid var(--stroke);font-size:14px;}
-.kontaktFirma .muted{color:var(--muted);font-size:13px;}
-.kontaktFirma .small{font-size:12px;margin-top:4px;}
-.kontaktMap{border-radius:20px;overflow:hidden;border:1px solid var(--stroke);min-height:360px;background:rgba(255,255,255,0.03);}
-.kontaktMap iframe{width:100%;height:100%;min-height:360px;border:0;display:block;}
-.formularzGrid{display:grid;gap:24px;grid-template-columns:1fr 420px;align-items:start;margin-top:20px;}
-#quickForm{display:grid;gap:10px;}
-#quickForm input,#quickForm select{padding:12px 14px;border-radius:14px;border:1px solid var(--stroke);background:rgba(255,255,255,0.05);color:var(--text);font-family:inherit;font-size:14px;}
-#quickForm input:focus,#quickForm select:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,0.08);}
-#quickForm .pill{justify-content:center;width:100%;}
-.small{font-size:12px;}
-.muted{color:var(--muted);}
-
-@media (max-width:720px){.formularzGrid{grid-template-columns:1fr;}}
-
-  
-.trustLogos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:32px;padding:20px 0;}
-.trustLogos img{max-height:36px;width:auto;opacity:.7;filter:grayscale(1);transition:opacity .2s,filter .2s;}
-.trustLogos img:hover{opacity:1;filter:grayscale(0);}
-@media (max-width:480px){.trustLogos{gap:20px;}.trustLogos img{max-height:28px;}}
-.proofItem{display:flex;gap:14px;align-items:flex-start;}
-.proofLogo{width:56px;height:56px;object-fit:contain;flex:0 0 auto;border-radius:12px;background:rgba(255,255,255,0.06);padding:6px;}
-.proofItem h3{margin:0 0 4px;font-size:15px;}
-.proofItem p{margin:0;color:var(--muted);font-size:13px;line-height:1.45;}
-.kontaktGrid{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-top:20px;}
-@media (max-width:860px){.kontaktGrid{grid-template-columns:1fr;}}
-.kontaktLeft{display:flex;flex-direction:column;gap:20px;}
-.ctaColumn{display:flex;flex-direction:column;gap:10px;}
-.ctaColumn .pill{justify-content:flex-start;width:100%;}
-.kontaktInfo{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--muted);padding-top:12px;border-top:1px solid var(--stroke);}
-.kontaktFirma{padding-top:12px;border-top:1px solid var(--stroke);font-size:14px;}
-.kontaktFirma .muted{color:var(--muted);font-size:13px;}
-.kontaktFirma .small{font-size:12px;margin-top:4px;}
-.kontaktMap{border-radius:20px;overflow:hidden;border:1px solid var(--stroke);min-height:360px;background:rgba(255,255,255,0.03);}
-.kontaktMap iframe{width:100%;height:100%;min-height:360px;border:0;display:block;}
-.formularzGrid{display:grid;gap:24px;grid-template-columns:1fr 1.2fr;align-items:start;margin-top:20px;}
-@media (max-width:720px){.formularzGrid{grid-template-columns:1fr;}}
-#quickForm{display:grid;gap:10px;}
-#quickForm input,#quickForm select{padding:12px 14px;border-radius:14px;border:1px solid var(--stroke);background:rgba(255,255,255,0.05);color:var(--text);font-family:inherit;font-size:14px;}
-#quickForm input:focus,#quickForm select:focus{outline:none;border-color:var(--accent);background:rgba(255,255,255,0.08);}
-#quickForm .pill{justify-content:center;width:100%;}
-.small{font-size:12px;}
-
-footer{border-top:1px solid var(--stroke);padding:48px 0 32px;margin-top:40px;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.08));}
-.footCta{margin-bottom:32px;text-align:center;}
-.footCta h3{font-size:24px;letter-spacing:-0.02em;margin:12px 0 10px;}
-.footCta .sub{margin:0 auto 18px;max-width:56ch;}
-.footCta .pill{margin:0 auto;}
-.footGrid{display:grid;gap:28px;grid-template-columns:1.4fr 1fr 1fr 1fr;padding:24px 0;border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);}
-@media (max-width:860px){.footGrid{grid-template-columns:1fr 1fr;}}
-@media (max-width:480px){.footGrid{grid-template-columns:1fr;gap:20px;}}
-.footBrand{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.footBrand img{width:36px;height:36px;border-radius:10px;}
-.footBrandName{font-weight:700;letter-spacing:-0.01em;font-size:15px;}
-.footBrandTag{font-size:12px;margin-top:2px;}
-.footTitle{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);font-weight:640;}
-.footList{list-style:none;padding:0;margin:0;display:grid;gap:8px;}
-.footList a{color:var(--muted);font-size:14px;transition:color .15s;}
-.footList a:hover{color:var(--text);}
-.footBottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:20px;}
-.footBottom .fine{display:block;line-height:1.5;border-top:none;padding-top:0;margin-top:0;}
-.footLinks{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted2);}
-.footLinks a{color:var(--muted);}
-.footLinks a:hover{color:var(--text);}
-.footLinks span{opacity:0.4;}
-
-.nav{transition:transform .28s ease, backdrop-filter .2s ease;will-change:transform;}
-.nav.hide{transform:translateY(-100%);}
-.nav.scrolled{background:linear-gradient(180deg,rgba(0,0,0,0.32),rgba(0,0,0,0.14));border-bottom-color:rgba(255,255,255,0.10);}
-@media (prefers-color-scheme:light){.nav.scrolled{background:linear-gradient(180deg,rgba(255,255,255,0.92),rgba(255,255,255,0.75));border-bottom-color:rgba(10,20,35,0.14);}}
-
-footer{border-top:none;}
-.footBottom .fine{display:block;line-height:1.5;border-top:none;padding-top:0;margin-top:0;}
-
-/* ===== COOKIE BANNER ===== */
-#cookieBanner{position:fixed;bottom:12px;left:12px;right:12px;max-width:520px;margin:0 auto;z-index:9999;padding:20px;border-radius:20px;background:rgba(22,27,34,.96);border:1px solid var(--card-border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);color:var(--text);font-family:inherit;animation:cookieSlideUp .4s cubic-bezier(.16,1,.3,1);display:none;}
-#cookieBanner.show{display:block;}
-@keyframes cookieSlideUp{from{transform:translateY(20px);opacity:0;}to{transform:translateY(0);opacity:1;}}
-.cookieHead{display:flex;flex-wrap:wrap;align-items:flex-start;gap:14px;margin-bottom:14px;}
-.cookieIco{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--brand-light));display:grid;place-items:center;flex-shrink:0;box-shadow:0 4px 16px var(--brand-glow);}
-.cookieIco svg{width:22px;height:22px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.cookieTitle{font-size:1.05rem;font-weight:800;letter-spacing:-.2px;margin:0 0 4px;color:var(--text-bright);}
-.cookieDesc{font-size:.85rem;line-height:1.55;color:var(--text-dim);margin:0;}
-.cookieDesc a{color:var(--brand-light);text-decoration:underline;text-underline-offset:2px;}
-.cookieActions{display:grid;grid-template-columns:1fr;gap:8px;margin-top:16px;}
-.cookieBtn{padding:11px 14px;border-radius:12px;border:1px solid var(--card-border);background:var(--card);color:var(--text);font-weight:700;font-size:13px;font-family:inherit;cursor:pointer;transition:border-color .15s,background .15s,transform .1s;}
-.cookieBtn:hover{border-color:var(--brand-light);background:var(--bg3);}
-.cookieBtn:active{transform:scale(.98);}
-.cookieBtn.primary{grid-column:1/-1;border-color:transparent;background:linear-gradient(135deg,var(--brand),var(--brand-light));color:#fff;box-shadow:0 4px 20px var(--brand-glow);}
-.cookieBtn.primary:hover{border-color:transparent;background:linear-gradient(135deg,var(--brand-light),var(--brand));color:#fff;}
-.cookieBtn.settings{font-size:11.5px;letter-spacing:.3px;color:var(--text-dim);background:transparent;}
-.cookieBtn.settings:hover{color:var(--text-bright);border-color:var(--brand-light);}
-@media(min-width:600px){#cookieBanner{left:20px;right:20px;bottom:20px;padding:24px;}.cookieActions{grid-template-columns:1fr 1fr;}}
-
-/* ===== COOKIE SETTINGS MODAL ===== */
-#cookieModal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);z-index:10000;align-items:center;justify-content:center;padding:16px;}
-#cookieModal.show{display:flex;}
-.cookieModalBox{max-width:580px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;border-radius:20px;background:rgba(22,27,34,.98);border:1px solid var(--card-border);box-shadow:0 32px 80px rgba(0,0,0,.6);animation:cookieSlideUp .35s cubic-bezier(.16,1,.3,1);}
-.cookieModalBox h3{margin:0 0 8px;font-size:1.3rem;font-weight:800;letter-spacing:-.3px;color:var(--text-bright);}
-.cookieModalBox>p{margin:0 0 20px;color:var(--text-dim);font-size:.92rem;line-height:1.6;}
-.cookieCategory{padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--card-border);margin-bottom:12px;}
-.cookieCategoryHead{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:14px;}
-.cookieCategoryHead strong{display:block;font-size:.98rem;margin-bottom:4px;color:var(--text-bright);}
-.cookieCategoryHead p{margin:0;font-size:.82rem;color:var(--text-dim);line-height:1.5;}
-.cookieToggle{position:relative;flex-shrink:0;width:44px;height:24px;border-radius:99px;background:var(--bg3);border:1px solid var(--card-border);cursor:pointer;transition:background .2s;appearance:none;-webkit-appearance:none;}
-.cookieToggle::after{content:"";position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:99px;background:#fff;transition:transform .2s;}
-.cookieToggle:checked{background:linear-gradient(135deg,var(--brand),var(--brand-light));border-color:transparent;}
-.cookieToggle:checked::after{transform:translateX(20px);}
-.cookieToggle:disabled{opacity:.7;cursor:not-allowed;}
-.cookieToggle:disabled::after{background:rgba(255,255,255,.7);}
-.cookieModalActions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
-.cookieModalActions .cookieBtn{flex:1 1 100%;}
-@media(min-width:600px){.cookieModalBox{padding:32px;}.cookieModalActions .cookieBtn{flex:1;}}
-
-/* ===== FLOATING REOPEN ICON ===== */
-#cookieReopen{display:none;position:fixed;bottom:20px;left:20px;width:44px;height:44px;border-radius:14px;background:rgba(22,27,34,.85);border:1px solid var(--card-border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:998;cursor:pointer;align-items:center;justify-content:center;color:var(--brand-light);box-shadow:0 8px 20px rgba(0,0,0,.3);transition:transform .15s,border-color .15s;}
-#cookieReopen:hover{transform:scale(1.05);border-color:var(--brand-light);}
-#cookieReopen.show{display:flex;}
-#cookieReopen svg{width:22px;height:22px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-@media (prefers-color-scheme:light){#cookieBanner{background:rgba(255,255,255,0.96);color:var(--text);}.cookieModalBox{background:rgba(255,255,255,0.98);color:var(--text);}#cookieReopen{background:rgba(255,255,255,0.9);}.cookieBtn{color:var(--text);}.cookieBtn.settings{color:var(--muted);}}
-
-#quickForm select option{background:#0b1220;color:var(--text);padding:10px;}2#quickForm select option:hover,#quickForm select option:focus,#quickForm select option:checked{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;}
-
-.formularzGrid{grid-template-columns:1fr 520px;}
-#quickForm input,#quickForm select{padding:10px 14px;font-size:13px;}
-@media (max-width:720px){.formularzGrid{grid-template-columns:1fr;}}
+/* ===== SEKCJA #scenariusze (cytat + strzalka) ===== */
+#scenariusze .grid{align-items:stretch}
+#scenariusze .card{position:relative;display:flex;flex-direction:column;padding:24px 20px 20px;overflow:hidden;transition:transform .2s ease,border-color .2s ease,background .2s ease}
+#scenariusze .card:hover{transform:translateY(-3px);border-color:var(--stroke2);background:rgba(255,255,255,0.07)}
+#scenariusze .card:before{content:"„";position:absolute;top:12px;right:16px;font-family:Georgia,"Times New Roman",serif;font-size:88px;font-weight:700;line-height:1;color:var(--accent);opacity:0.14;pointer-events:none}
+#scenariusze .card h3{position:relative;display:flex;align-items:flex-start;min-height:calc(1.4em * 2);margin:0 0 14px;padding:0 0 14px;font-size:16px;font-weight:700;letter-spacing:-0.01em;line-height:1.4;color:var(--text);border-bottom:1px solid var(--stroke)}
+#scenariusze .card h3:after{content:"";position:absolute;left:0;bottom:-1px;width:36px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+#scenariusze .card p{position:relative;margin:0;padding:0 0 0 22px;color:var(--muted);font-size:14px;line-height:1.5}
+#scenariusze .card p:before{content:"→";position:absolute;left:0;top:0;font-family:var(--mono);font-weight:700;font-size:15px;line-height:1.5;color:var(--accent2)}
+@media(max-width:720px){#scenariusze .card h3{min-height:0}}
+@media(max-width:480px){#scenariusze .card{padding:20px 16px 18px}#scenariusze .card:before{font-size:72px;right:12px}}
+/* FIX: ikona h2 w sekcji #pakiety inline z pierwszym wierszem tekstu na mobile */
+/* FIX: ikona h2 w sekcji #pakiety inline z pierwszym wierszem tekstu na mobile */
+@media(max-width:600px){#pakiety .sectionTitle h2,#copilot .sectionTitle h2,#m365 .sectionTitle h2{display:block}#pakiety .sectionTitle h2 .ico.ico-lg,#copilot .sectionTitle h2 .ico.ico-lg,#m365 .sectionTitle h2 .ico.ico-lg{display:inline-grid;vertical-align:-18px;margin-right:8px;width:28px;height:28px}#pakiety .sectionTitle h2 .ico.ico-lg svg,#copilot .sectionTitle h2 .ico.ico-lg svg,#m365 .sectionTitle h2 .ico.ico-lg svg{width:18px;height:18px}}
+/* FIX v2: ikona h2 w sekcjach #pakiety/#copilot/#m365 inline z tekstem na mobile */
+@media(max-width:600px){#pakiety .sectionTitle h2,#copilot .sectionTitle h2,#m365 .sectionTitle h2{display:block!important;gap:0!important;font-size:22px;line-height:1.25}#pakiety .sectionTitle h2 .ico.ico-lg,#copilot .sectionTitle h2 .ico.ico-lg,#m365 .sectionTitle h2 .ico.ico-lg{display:inline-flex!important;align-items:center;justify-content:center;vertical-align:-6px;margin-right:8px;width:28px;height:28px;flex-shrink:0}#pakiety .sectionTitle h2 .ico.ico-lg svg,#copilot .sectionTitle h2 .ico.ico-lg svg,#m365 .sectionTitle h2 .ico.ico-lg svg{width:16px;height:16px}}
+/* FIX v3: h2 z ikoną - wyrównanie do lewej krawędzi tekstu, ikona nie zabiera szerokości */
+@media(max-width:600px){#pakiety .sectionTitle h2,#copilot .sectionTitle h2,#m365 .sectionTitle h2{display:flex!important;align-items:flex-start;flex-wrap:nowrap;gap:10px;font-size:20px;line-height:1.3}#pakiety .sectionTitle h2 .ico.ico-lg,#copilot .sectionTitle h2 .ico.ico-lg,#m365 .sectionTitle h2 .ico.ico-lg{flex-shrink:0;margin-top:2px;width:26px;height:26px}#pakiety .sectionTitle h2 .ico.ico-lg svg,#copilot .sectionTitle h2 .ico.ico-lg svg,#m365 .sectionTitle h2 .ico.ico-lg svg{width:16px;height:16px}}
+/* FIX: przyciski hero (CTA row) full-width na mobile */
+@media(max-width:480px){.ctaRow{flex-direction:column;align-items:stretch}.ctaRow .pill{width:100%;justify-content:center}}
 </style>
 
   <!-- JSON-LD (basic SEO) -->
@@ -734,7 +602,7 @@ footer{border-top:none;}
 
 <body>
 <div class="nav"><div class="wrap navin"><a class="brand" href="/" src="logo-32.png" alt="microsoftdlafirm.com" width="32" height="32"><img src="logo-32.png"><span class="brandName">Microsoft dla firm</span></a><nav class="menu" aria-label="Nawigacja">
-  <a href="#dlaczego">Dlaczego teraz</a>
+  <a href="#dlaczego">Wyzwania</a>
   <a href="#filary">Co wdrażamy</a>
   <a href="#pakiety">Pakiety</a>
   <a href="#proces">Proces</a>
@@ -763,7 +631,7 @@ footer{border-top:none;}
     <nav class="drawerLinks" aria-label="Nawigacja mobilna">
       <a class="drawerLink" href="#dlaczego">
         <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="dLbl">Dlaczego teraz</span><span class="dGo">↵</span>
+        <span class="dLbl">Wyzwania</span><span class="dGo">↵</span>
       </a>
       <a class="drawerLink" href="#filary">
         <svg class="dIc" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -878,7 +746,7 @@ footer{border-top:none;}
     <!-- WHY NOW -->
     <section id="dlaczego">
       <div class="secHead">
-        <h2>Dlaczego warto zrobić to teraz</h2>
+        <h2>Trzy powody, żeby nie odkładać przejścia na Microsoft na później</h2>
         <!-- <div class="hint">SMB zwykle „urasta” do M365 przez problemy. Lepiej wdrożyć to kontrolowanie.</div> -->
       </div>
 
@@ -891,9 +759,9 @@ footer{border-top:none;}
                 <path d="M7 8h10M7 12h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </div>
-            <h3>Komunikacja i praca hybrydowa</h3>
+            <h3>Koniec z pracą na mailach</h3>
           </div>
-          <p>Teams, wspólne pliki i kalendarze w jednym miejscu. Mniej maili, mniej „prześlij mi jeszcze raz”, szybsze ustalenia.</p>
+          <p><span class="challenge">Twój zespół codziennie traci godziny na szukaniu ustaleń w skrzynce.</span> Przejdź na Teams, pracę na wspólnych plikach i w jednym kalendarzu. Znikają „prześlij mi jeszcze raz" i „która wersja jest aktualna", ustalenia zapadają szybciej, a nowi pracownicy wdrażają się w dni, nie w tygodnie.</p>
         </div>
 
         <div class="card col-4">
@@ -907,7 +775,7 @@ footer{border-top:none;}
             </div>
             <h3>Bezpieczny dostęp</h3>
           </div>
-          <p>Włamanie na firmową skrzynkę potrafi kosztować Cię klientów, przelew i reputację. Wdrażamy dodatkowe potwierdzanie logowania i zasady dostępu, które zamykają najczęstsze drogi ataku..</p>
+          <p><span class="challenge">Wystarczy jeden phishingowy mail, żeby przejąć firmową skrzynkę. </span>Przejęta skrzynka to fałszywa faktura wysłana do Twojego klienta, przelew w niewłaściwe miejsce i miesiące odbudowy zaufania. Dwuetapowe logowanie i zasady dostępu Microsoft 365 zamykają najczęstsze drogi ataku, nie utrudniając codziennej pracy.</p>
         </div>
 
         <div class="card col-4">
@@ -921,7 +789,7 @@ footer{border-top:none;}
             </div>
             <h3>AI wymaga porządku</h3>
           </div>
-          <p>Jeśli w firmowych plikach panuje bałagan, AI ten bałagan powieli i przyspieszy. Najpierw porządek w danych i uprawnieniach, potem Copilot.</p>
+          <p><span class="challenge">Copilot nie sprawdzi, czy pracownik powinien widzieć dany plik. </span>Copilot pokaże pracownikowi wszystko, do czego ma dostęp. Jeśli uprawnienia są chaotyczne, AI wyciągnie na wierzch cudze umowy, pensje i poufne notatki. Najpierw porządek w danych i dostępach, dopiero potem AI.</p>
         </div>
       </div>
     </section>
@@ -1013,69 +881,255 @@ footer{border-top:none;}
 
       <div class="grid">
         <div class="card col-4">
-          <h3>„Chcę, żeby każdy wiedział gdzie są pliki”</h3>
+          <h3>„Chcę, żeby ludzie przestali pytać, gdzie&nbsp;są&nbsp; pliki”</h3>
           <p>Porządek w dokumentach + kontrola udostępnień. Koniec z „wyślij mi jeszcze raz”.</p>
         </div>
         <div class="card col-4">
-          <h3>„Współpraca i ustalenia muszą być szybsze”</h3>
+          <h3>„Współpraca i ustalenia muszą być&nbsp;szybsze”</h3>
           <p>Teams + spójne kanały + standard spotkań. Mniej maili, mniej niejasności.</p>
         </div>
         <div class="card col-4">
-          <h3>„Potrzebuję bezpieczeństwa bez korporacyjnego ciężaru”</h3>
+          <h3>„Potrzebuję bezpieczeństwa, które&nbsp;nie&nbsp;przeszkadza&nbsp; na co dzień."</h3>
           <p>MFA, zasady dostępu i standardy zabezpieczeń – wdrożone tak, by nie przeszkadzały w pracy.</p>
         </div>
       </div>
     </section>
 
-    <!-- PRICING -->
-    <section id="pakiety">
-      <div class="secHead">
-        <h2>Pakiety wdrożenia (czytelnie i bez ukrytych haczyków)</h2>
-        <!-- <div class="hint">Dokładna wycena zależy od liczby kont, domen i źródła danych.</div> -->
+<section id="pakiety">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <span class="pill" style="margin-bottom:10px;"><span class="dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.14);"></span> Programy wdrożeniowe</span>
+        <h2>
+          <span class="ico ico-lg" style="color:var(--accent2)">
+            <svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+          </span>
+          Trzy programy – dla każdego etapu rozwoju firmy
+        </h2>
+        <p class="lead">Każdy program to konkretny zakres prac i pakiet technologii dobranych do wielkości i ryzyka firmy. Bez ogólników – wiesz, co dostajesz i dla kogo to jest.</p>
+      </div>
+    </div>
+
+    <div class="productGrid">
+
+      <!-- KARTA 1: p1 - M365 Admin (neutralna/cyjan subtelny) -->
+      <div class="productCard p1">
+        <span class="productBadge">Startujemy · 1–10 pracowników</span>
+        <h3>M365 Admin</h3>
+        <p class="productDesc">Prosty program wdrożenia bezpiecznego środowiska pracy. Co miesiąc dostajesz nowe ustawienia zabezpieczeń – Twoja firma rośnie w ochronie krok po kroku.</p>
+        <div class="productTarget">
+          <strong>Dla kogo</strong>
+          Mikrofirmy i startujące zespoły 1–10 osób. Nie masz IT, nie chcesz „dużej teorii" – chcesz, żeby było bezpiecznie i działało.
+        </div>
+        <ul class="productScope">
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Uruchomienie Microsoft 365 w programie ONE: dzierżawa, konta i licencje dla całego zespołu</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Migracja poczty na Microsoft 365 z konfiguracją domeny (SPF, DKIM, DMARC) bez przestoju</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Dwuetapowe logowanie dla wszystkich pracowników: nawet znane hasło nie wystarczy, żeby wejść do firmy</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Program M365 ONE: 12 miesięcy, 12 zabezpieczeń – poczta, tożsamość i komputery pod stałą opieką</li>
+        </ul>
+        <a class="btn" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Admin&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20program%20M365%20Admin.%0A%0ANazwa%20firmy%3A%0ALiczba%20pracownik%C3%B3w%3A%0AKontakt%3A%0A%0ADzi%C4%99kuj%C4%99.">Zapytaj o M365 Admin</a>
       </div>
 
-      <div class="grid">
-        <div class="card col-4 price">
-<div class="tag">administracja dla małej firmy</div>
-<div class="big">M365 Admin</div>
-<div class="per">wdrożenie, migracja i codzienna pomoc w jednej opłacie</div>
-          <ul>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Uruchomienie Microsoft 365 w programie ONE: dzierżawa, konta i licencje dla całego zespołu</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Migracja poczty na Microsoft 365 z konfiguracją domeny (SPF, DKIM, DMARC) bez przestoju</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Dwuetapowe logowanie dla wszystkich pracowników: nawet znane hasło nie wystarczy, żeby wejść do firmy</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Program M365 ONE: 12 miesięcy, 12 zabezpieczeń – poczta, tożsamość i komputery pod stałą opieką</li>
-          </ul>
+      <!-- KARTA 2: p2 - M365 Cyber (CYJAN featured) -->
+      <div class="productCard p2">
+        <span class="productBadge">Rośniemy · 10–50 pracowników</span>
+        <h3>M365 Cyber</h3>
+        <p class="productDesc">Plan wdrożenia podwyższonych zabezpieczeń dla rosnących firm. Pełna kontrola dostępu, urządzeń i komunikacji – bez luk w politykach zabezpieczeń.</p>
+        <div class="productTarget">
+          <strong>Dla kogo</strong>
+          Małe i średnie firmy 10–50 osób. Działają w Microsoft 365, ale wiedzą, że bez polityk i zarządzania urządzeniami robi się ryzykownie.
         </div>
-
-        <div class="card col-4 price featured">
-<div class="tag">dla firm ceniących bezpieczeństwo</div>
-<div class="big">M365 Cyber</div>
-<div class="per">administracja Microsoft 365 z ochroną przed ransomware i phishingiem</div>
-<ul>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Microsoft 365 Business Premium: kompletne środowisko pracy z zabezpieczeniami klasy enterprise</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Ochrona kont i poczty: dwuetapowe logowanie, zasady dostępu, blokada phishingu i groźnych linków</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Zarządzanie komputerami z chmury: BitLocker, aktualizacje i ochrona przed ransomware</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Stała administracja i monitoring zgodnie z rekomendacjami Microsoft i CISA</li>
-</ul>
-</ul>
-        </div>
-
-        <div class="card col-4 price">
-<div class="tag">dla dojrzałych organizacji</div>
-<div class="big">M365 Expert</div>
-<div class="per">zdalny ekspert bezpieczeństwa Microsoft 365 dla firm od 50 pracowników</div>
-<ul>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Microsoft 365 Business Premium lub Enterprise F1-E5: pełne środowisko pracy i zabezpieczeń klasy korporacyjnej</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Model Zero Trust: dostęp warunkowy, logowanie kluczem sprzętowym FIDO2 (YubiKey), ochrona przed przejęciem konta</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Ochrona danych i urządzeń: klasyfikacja informacji (MIP), zapobieganie wyciekom (DLP), szyfrowanie BitLocker, zarządzanie telefonami</li>
-<li><span class="chk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 12.5l3.2 3.2L18 7.9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Stały monitoring alertów Microsoft Defender i reagowanie na incydenty: audyt zdarzeń przez 180 dni</li>
-</ul>
-          </ul>
-        </div>
+        <ul class="productScope">
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Microsoft 365 Business Premium: kompletne środowisko pracy z zabezpieczeniami klasy enterprise</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Ochrona kont i poczty: dwuetapowe logowanie, zasady dostępu, blokada phishingu i groźnych linków</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Zarządzanie komputerami z chmury: BitLocker, aktualizacje i ochrona przed ransomware</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Stała administracja i monitoring zgodnie z rekomendacjami Microsoft i CISA</li>
+        </ul>
+        <a class="btn" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Cyber&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20program%20M365%20Cyber.%0A%0ANazwa%20firmy%3A%0ALiczba%20pracownik%C3%B3w%3A%0AKontakt%3A%0A%0ADzi%C4%99kuj%C4%99.">Zapytaj o M365 Cyber</a>
       </div>
-    
-<div style="text-align:center; margin-top:24px;"><a class="pill" href="https://microsoft365.com.pl/cennik.html" target="_blank" rel="noopener"><svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Zobacz kompletny cennik Microsoft 365</a></div>
+
+      <!-- KARTA 3: p3 - M365 Expert (FIOLET featured-purple) -->
+      <div class="productCard p3">
+        <span class="productBadge">Skalujemy · 50–300 pracowników</span>
+        <h3>M365 Expert</h3>
+        <p class="productDesc">Zabezpieczenia najwyższej klasy dla Microsoft 365 wraz z monitoringiem bezpieczeństwa. Pełna obserwowalność środowiska – wiesz, co się dzieje, zanim coś się stanie.</p>
+        <div class="productTarget">
+          <strong>Dla kogo</strong>
+          Średnie firmy 50–300 osób. Wymagania regulacyjne (RODO, NIS2, branżowe), wielu pracowników mobilnych, dane wrażliwe – kontrola musi być ciągła.
+        </div>
+        <ul class="productScope">
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Microsoft 365 Business Premium lub Enterprise F1–E5: pełne środowisko pracy i zabezpieczeń klasy korporacyjnej</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Model Zero Trust: dostęp warunkowy, logowanie kluczem sprzętowym FIDO2 (YubiKey), ochrona przed przejęciem konta</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Ochrona danych i urządzeń: klasyfikacja informacji (MIP), zapobieganie wyciekom (DLP), szyfrowanie BitLocker, zarządzanie telefonami</li>
+          <li><span class="ico ico-sm ico-check"><svg viewBox="0 0 24 24"><polyline points="5 12 10 17 19 7"/></svg></span> Stały monitoring alertów Microsoft Defender i reagowanie na incydenty: audyt zdarzeń przez 180 dni</li>
+        </ul>
+        <a class="btn" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Expert&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20program%20M365%20Expert.%0A%0ANazwa%20firmy%3A%0ALiczba%20pracownik%C3%B3w%3A%0AKontakt%3A%0A%0ADzi%C4%99kuj%C4%99.">Zapytaj o M365 Expert</a>
+      </div>
+
+    </div>
+
+    <p class="productFine">Programy to usługi standaryzowane – wycena zależy od wielkości firmy, posiadanych licencji i zakresu wdrożenia. Wycena w PLN po krótkiej rozmowie.</p>
+
+    <div style="text-align:center; margin-top:24px;">
+      <a class="pill" href="https://microsoft365.com.pl/cennik.html" target="_blank" rel="noopener">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        Zobacz kompletny cennik Microsoft 365
+      </a>
+    </div>
+  </div>
 </section>
+
+
+<!-- M365 + COPILOT -->
+<section id="copilot">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <span class="pill" style="margin-bottom:10px;"><span class="dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.14);"></span> AI dla firm</span>
+        <h2><span class="ico ico-lg" style="color:var(--accent2)"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 014 4v1a4 4 0 01-8 0V6a4 4 0 014-4z"/><path d="M9 11.5A3.5 3.5 0 005.5 15v2h13v-2A3.5 3.5 0 0015 11.5"/><circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/></svg></span> Microsoft 365 + Copilot</h2>
+        <p class="lead">Licencje M365 z wbudowanym asystentem AI Copilot. Zwiększaj produktywność całej firmy.</p>
+      </div>
+    </div>
+    <div class="pricing" style="align-items:flex-end; gap:1.2rem;">
+
+      <!-- KARTA 1: neutralna -->
+      <div class="priceCard" style="opacity:0.85; padding:0.8rem; display:flex; flex-direction:column;">
+        <div class="badge purple"><span class="dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.12);"></span> Dodatek AI</div>
+        <div class="priceName">Microsoft 365 Copilot Business</div>
+        <p class="priceDesc">Dodatek Copilot do istniejącej subskrypcji M365 Business Standard lub Premium.</p>
+        <div style="margin-top:auto;">
+          <div class="price">899 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Copilot w Word, Excel, PowerPoint, Outlook, Teams</li>
+            <li>Microsoft 365 Chat (Business Chat)</li>
+            <li>Wymaga M365 Business Standard lub Premium</li>
+          </ul>
+          <a class="btn" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20Microsoft%20365%20Copilot%20Business%20(dodatek)&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20Microsoft%20365%20Copilot%20Business%20(dodatek).%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o Copilot</a>
+        </div>
+      </div>
+
+      <!-- KARTA 2: featured (cyjan) -->
+      <div class="priceCard featured" style="padding:1.8rem; display:flex; flex-direction:column;">
+        <div class="badge"><span class="dot" aria-hidden="true"></span> Pakiet z AI</div>
+        <div class="priceName">M365 Business Standard + Copilot</div>
+        <p class="priceDesc">Pełen pakiet Microsoft 365 Business Standard z Copilotem w cenie.</p>
+        <div style="margin-top:auto;">
+          <div class="price">999 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Aplikacje Office (desktop + web + mobile)</li>
+            <li>Exchange, Teams, SharePoint, OneDrive</li>
+            <li>Copilot we wszystkich aplikacjach M365</li>
+            <li>Webinary i zdarzenia online</li>
+          </ul>
+          <a class="btn primary" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Business%20Standard%20%2B%20Copilot&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20M365%20Business%20Standard%20%2B%20Copilot.%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o pakiet</a>
+        </div>
+      </div>
+
+      <!-- KARTA 3: featured-purple (fiolet) -->
+      <div class="priceCard featured-purple" style="padding:2.5rem 1.8rem; display:flex; flex-direction:column; box-shadow:0 0 40px rgba(124,92,255,.15), 0 0 0 1px rgba(124,92,255,.25);">
+        <div class="badge purple"><span class="dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.12);"></span><span class="ico ico-sm" style="color:rgba(255,160,60,.9)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" stroke="none"/></svg></span> Najlepsza wartość</div>
+        <div class="priceName">M365 Business Premium + Copilot</div>
+        <p class="priceDesc">Wszystko: Office, bezpieczeństwo, Intune, Defender i Copilot AI w jednym.</p>
+        <div style="margin-top:auto;">
+          <div class="price">1 499 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Wszystko z Business Standard + Copilot</li>
+            <li>Microsoft Defender for Business</li>
+            <li>Intune (zarządzanie urządzeniami)</li>
+            <li>Azure Information Protection</li>
+            <li>Dostęp warunkowy + zaawansowane MFA</li>
+          </ul>
+          <a class="btn accent2" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Business%20Premium%20%2B%20Copilot&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20M365%20Business%20Premium%20%2B%20Copilot.%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o Premium + Copilot</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:16px;text-align:center;">
+      <a class="btn accent2" href="https://m365withcopilot.com" target="_blank" rel="noopener"><span class="ico ico-sm"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span> Więcej o Copilot dla firm</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- M365 LICENCJE BAZOWE -->
+<section id="m365">
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <span class="pill" style="margin-bottom:10px;"><span class="dot"></span> Licencje</span>
+        <h2><span class="ico ico-lg" style="color:var(--accent)"><svg viewBox="0 0 24 24"><path d="M21 8V21H3V8"/><path d="M23 3H1v5h22V3z"/><path d="M10 12h4v4h-4z"/></svg></span> Microsoft 365 Business</h2>
+        <p class="lead">Podstawowe plany Microsoft 365 dla firm do 300 użytkowników. Poczta, Teams, Office, chmura.</p>
+      </div>
+    </div>
+    <div class="pricing" style="align-items:flex-end; gap:1.2rem;">
+
+      <!-- KARTA 1: neutralna -->
+      <div class="priceCard" style="opacity:0.85; padding:0.8rem; display:flex; flex-direction:column;">
+        <div class="badge neutral"><span class="dot" style="background:rgba(232,238,252,.40);box-shadow:none;"></span> Podstawowy</div>
+        <div class="priceName">Microsoft 365 Business Basic</div>
+        <p class="priceDesc">Poczta, Teams, OneDrive i aplikacje Office w wersji web.</p>
+        <div style="margin-top:auto;">
+          <div class="price">299 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Exchange Online (100 GB skrzynka)</li>
+            <li>Teams (czat, spotkania, rozmowy)</li>
+            <li>OneDrive 1 TB na użytkownika</li>
+            <li>SharePoint Online</li>
+            <li>Aplikacje Office – tylko web i mobile</li>
+          </ul>
+          <a class="btn" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Business%20Basic&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20Microsoft%20365%20Business%20Basic.%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o Basic</a>
+        </div>
+      </div>
+
+      <!-- KARTA 2: featured (cyjan) -->
+      <div class="priceCard featured" style="padding:1.8rem; display:flex; flex-direction:column;">
+        <div class="badge"><span class="dot" aria-hidden="true"></span> Popularny</div>
+        <div class="priceName">Microsoft 365 Business Standard</div>
+        <p class="priceDesc">Pełne aplikacje Office desktop + wszystko z Basic + webinary.</p>
+        <div style="margin-top:auto;">
+          <div class="price">599 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Wszystko z Business Basic</li>
+            <li>Aplikacje Office desktop (Word, Excel, PowerPoint, Outlook…)</li>
+            <li>Webinary i zdarzenia online</li>
+            <li>Microsoft Loop, Clipchamp</li>
+          </ul>
+          <a class="btn primary" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Business%20Standard&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20Microsoft%20365%20Business%20Standard.%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o Standard</a>
+        </div>
+      </div>
+
+      <!-- KARTA 3: featured-purple (fiolet) -->
+      <div class="priceCard featured-purple" style="padding:2.5rem 1.8rem; display:flex; flex-direction:column; box-shadow:0 0 40px rgba(124,92,255,.15), 0 0 0 1px rgba(124,92,255,.25);">
+        <div class="badge purple"><span class="dot" style="background:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.12);"></span><span class="ico ico-sm" style="color:rgba(255,160,60,.9)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" stroke="none"/></svg></span> Bezpieczeństwo</div>
+        <div class="priceName">Microsoft 365 Business Premium</div>
+        <p class="priceDesc">Wszystko ze Standard + zaawansowane bezpieczeństwo i zarządzanie urządzeniami.</p>
+        <div style="margin-top:auto;">
+          <div class="price">999 PLN</div>
+          <div style="font-size:0.75rem; opacity:0.45; margin-top:-4px;">netto / użytkownik / rok</div>
+          <ul class="bullets">
+            <li>Wszystko z Business Standard</li>
+            <li>Microsoft Defender for Business</li>
+            <li>Intune (zarządzanie urządzeniami)</li>
+            <li>Azure Information Protection P1</li>
+            <li>Dostęp warunkowy (Conditional Access)</li>
+          </ul>
+          <a class="btn accent2" style="margin-top:auto;" href="mailto:msp@valcreon.com?subject=Zapytanie%20%E2%80%93%20M365%20Business%20Premium&body=Dzie%C5%84%20dobry%2C%0A%0AInteresuje%20mnie%20Microsoft%20365%20Business%20Premium.%0A%0ALiczba%20u%C5%BCytkownik%C3%B3w%3A%20%0A%0A">Zapytaj o Premium</a>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:16px;text-align:center;">
+      <a class="btn" href="https://microsoft365.com.pl/cennik.html" target="_blank" rel="noopener"><span class="ico ico-sm"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span> Pełen cennik i opcje zakupu</a>
+      <a class="btn" href="https://microsoft365.com.pl/subskrypcja.html" target="_blank" rel="noopener"><span class="ico ico-sm"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></span> Przewodnik po subskrypcji</a>
+    </div>
+  </div>
+</section>
+
 
 <section id="proces">
 <div class="secHead"><h2>Proces wdrożenia (prosto i przewidywalnie)</h2></div>
@@ -1125,20 +1179,29 @@ footer{border-top:none;}
 <div style="text-align:center; margin-top:20px;"><a class="pill" href="https://1sec.pl/sec/certyfikaty.html" target="_blank" rel="noopener">Zobacz wszystkie certyfikaty Microsoft <svg class="ic" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polyline points="9 18 15 12 9 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a></div>
 </section>
 
+<!-- ZAUFALI NAM -->
 <section id="zaufali">
-<div class="secHead"><h2>Zaufali nam m.in.</h2></div>
-<div class="trustLogos">
-<img src="investa.png" alt="Investa">
-<img src="dom100.png" alt="Dom 100">
-<img src="kuchnia.webp" alt="Kuchnia Vikinga">
-<img src="car.jpg" alt="Car Arena">
-<img src="diety.svg" alt="Diety Od Brokula">
-<img src="bio.jpg" alt="Bioanalytic">
-<img src="hcm.png" alt="High Capital Holding">
-<img src="steskal.png" alt="Pan Steskal">
-<img src="tree.svg" alt="Tree Capital">
-<img src="consult.svg" alt="ConsultRisk">
-</div>
+  <div class="container">
+    <div class="sectionTitle">
+      <div>
+        <span class="pill"><span class="dot"></span> Klienci</span>
+        <h2 style="margin-top:12px;">Zaufali nam m.in.</h2>
+        <p class="lead">Naszym klientom pomagamy bezpiecznie korzystać z Microsoft 365, wdrażać AI oraz rozwijać nowoczesne środowiska pracy.</p>
+      </div>
+    </div>
+    <div class="trustGrid reveal">
+        <div class="trustTile" title="Investa — investa.pl"><img src="investa.jpg" alt="Investa" loading="lazy"></div>
+        <div class="trustTile" title="Dom 100 — dom100.eu"><img src="dom100.png" alt="Dom 100" loading="lazy"></div>
+        <div class="trustTile" title="Kuchnia Vikinga — kuchniavikinga.pl"><img src="kuchnia.webp" alt="Kuchnia Vikinga" loading="lazy"></div>
+        <div class="trustTile" title="Car Arena — cararena.pl"><img src="car.jpg" alt="Car Arena" loading="lazy"></div>
+        <div class="trustTile" title="Diety Od Brokuła — dietyodbrokula.pl"><img src="diety.svg" alt="Diety Od Brokuła" loading="lazy"></div>
+        <div class="trustTile" title="Bioanalytic — bioanalytic.pl"><img src="bio.jpg" alt="Bioanalytic" loading="lazy"></div>
+        <div class="trustTile" title="High Capital Holding — hcm.pl"><img src="hcm.png" alt="High Capital Holding" loading="lazy"></div>
+        <div class="trustTile" title="Pan Steskal — pansteskal.pl"><img src="steskal.png" alt="Pan Steskal" loading="lazy"></div>
+        <div class="trustTile" title="Tree Capital — tree.com.pl"><img src="tree.svg" alt="Tree Capital" loading="lazy"></div>
+        <div class="trustTile" title="ConsultRisk — consultrisk.pl"><img src="consult.svg" alt="ConsultRisk" loading="lazy"></div>
+    </div>
+  </div>
 </section>
 
 <section id="kontakt">
